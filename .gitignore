@@ -1,0 +1,11 @@
+*.keystore
+*.sw*
+platforms/^.*
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
