@@ -1,6 +1,18 @@
-ionic-angular-cordova-seed
+sheHacksApp
 ==========================
 
-The perfect starting point for an Ionic project.
+## Purpose
+The project has been cloned from ionic-angular-cordova-seed.
 
-- [Ionic Tutorials](http://ionicframework.com/tutorials/)
+## Running the app
+For development purposes it's easiest to run with: 
+```bash
+$ cd www
+$ pythom -m SimpleHTTPServer
+```
+Alternatively, run it with phonegap:
+```bash
+$ phonegap run ios
+```
+
+
