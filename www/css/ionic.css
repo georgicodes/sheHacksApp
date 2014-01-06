@@ -2522,6 +2522,7 @@ img {
   -webkit-user-drag: none; }
 
 body, .ionic-body {
+  -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   -webkit-backface-visibility: hidden;
@@ -3208,7 +3209,7 @@ a.subdued {
   .bar > .button.pull-right,
   .bar .title + .buttons {
     position: absolute;
-    top: 5px;
+    top: 6px;
     right: 5px;
     bottom: 5px; }
 
@@ -4410,12 +4411,14 @@ button.item-button-right:after {
   visibility: hidden; }
 
 .slider-slides {
-  position: relative; }
+  position: relative;
+  height: 100%; }
 
 .slider-slide {
   display: block;
   position: relative;
   width: 100%;
+  height: 100%;
   float: left;
   vertical-align: top; }
 
@@ -4432,7 +4435,7 @@ button.item-button-right:after {
     display: inline-block;
     margin: 0px 3px;
     width: 15px;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     opacity: 0.3; }
     .slider-pager .slider-pager-page.active {
@@ -5604,14 +5607,14 @@ a.button {
   to {
     transform: translateX(0); } }
 
-@-webkit-keyframes slideOutToleft {
+@-webkit-keyframes slideOutToLeft {
   from {
     -webkit-transform: translate3d(0, 0, 0); }
 
   to {
     -webkit-transform: translate3d(-100%, 0, 0); } }
 
-@-moz-keyframes slideOutToleft {
+@-moz-keyframes slideOutToLeft {
   from {
     -moz-transform: translateX(0); }
 
