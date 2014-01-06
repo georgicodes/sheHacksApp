@@ -7,6 +7,10 @@ angular.module('sheHacksApp.controllers', [])
         $scope.openLeft = function () {
             $scope.sideMenuController.toggleLeft();
         };
+
+        $scope.closeMenu = function () {
+            $scope.sideMenuController.close();
+        }
     })
 
     .controller('VenueController', function ($scope) {

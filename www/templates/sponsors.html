@@ -1,6 +1,7 @@
 <nav-page id="sponsors">
 
-    <div class="content has-header">
+    <!-- content area -->
+    <content has-header="true" scroll="true">
 
         <h2>{{title}}</h2>
 
@@ -8,11 +9,10 @@
 
             <div class="item item-thumbnail-left" ng-repeat="sponsor in sponsors">
                 <img src="{{sponsor.src}}">
-
                 <h2>{{sponsor.name}}</h2>
-
-                <a href="http://{{sponsor.link}}" target="_blank">{{sponsor.link}}</a>
+                <a href="http://{{sponsor.link}}">{{sponsor.link}}</a>
             </div>
         </div>
-    </div>
+    </content>
+
 </nav-page>

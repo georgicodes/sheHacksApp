@@ -1,24 +1,19 @@
 <nav-page id="program">
 
-    <div class="content has-header">
+    <!-- content area -->
+    <content has-header="true" scroll="true">
         <h1>{{title}}</h1>
 
         <div class="list card">
-
             <div ng-repeat="item in schedule">
                 <h2>{{item.date}}</h2>
-
                 <div class="item" ng-repeat="slot in item.program">
-
                     <h3>{{slot.title}}</h3>
-
                     <p>{{slot.time}}</p>
                 </div>
             </div>
-
-
         </div>
 
-    </div>
+    </content>
 
 </nav-page>

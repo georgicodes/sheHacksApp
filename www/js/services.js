@@ -23,7 +23,10 @@ angular.module('sheHacksApp.services', [])
             ]},
             {"date": "Saturday 21st March, 2014", "program": [
                 {"title": "Breakfast & Coffee", "time": "8pm"},
-                {"title": "Welcome & Lightening Talks", "time": "7pm"}
+                {"title": "Welcome & Lightening Talks", "time": "7pm"},
+                {"title": "Welcome & Lightening Talks", "time": "8pm"},
+                {"title": "Welcome & Lightening Talks", "time": "9pm"},
+                {"title": "Welcome & Lightening Talks", "time": "10pm"}
             ]}
         ];
 
@@ -39,7 +42,9 @@ angular.module('sheHacksApp.services', [])
     .factory('SponsorsService', function () {
         var sponsors = [
             { name: 'Google', src: 'img/google.jpg', link: 'www.google.com.au'},
-            { name: 'Atlassian', src: 'img/atlassian.jpg', link: 'www.google.com.au'}
+            { name: 'Atlassian', src: 'img/atlassian.jpg', link: 'www.atlassian.com'},
+            { name: 'Github', src: 'img/atlassian.jpg', link: 'www.github.com'},
+            { name: 'Mi9', src: 'img/atlassian.jpg', link: 'www.google.com.au'}
         ];
 
         return {

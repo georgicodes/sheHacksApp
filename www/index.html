@@ -43,7 +43,7 @@
         <pane side-menu-content nav-router>
             <header class="bar bar-header bar-royal">
                 <button class="button button-icon" ng-click="openLeft()"><i class="icon ion-navicon"></i></button>
-                <h1 class="title">Slide Me</h1>
+                <h1 class="title">She Hacks | Girl Geek Sydney</h1>
             </header>
             <!-- where the content of each page will be rendered -->
             <ng-view></ng-view>
@@ -55,9 +55,8 @@
                 <h1 class="title">Menu</h1>
             </header>
             <content has-header="true">
-                <ul class="list">
-                    <a href="{{item.link}}" class="item item-icon-left" ng-repeat="item in list"
-                       ng-click="openLeft()">
+                <ul class="list" ng-click="closeMenu()">
+                    <a href="{{item.link}}" class="item item-icon-left" ng-repeat="item in list">
                         <i ng-class="item.iconClass"></i>
                         {{item.text}}
                     </a>
