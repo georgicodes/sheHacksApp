@@ -9,7 +9,7 @@ updated to reflect master as of 6th Jan 2014, this includes an update to angular
 For development purposes it's easiest to run with: 
 ```bash
 $ cd www
-$ pythom -m SimpleHTTPServer
+$ python -m SimpleHTTPServer
 ```
 Alternatively, run it with phonegap:
 ```bash
