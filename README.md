@@ -16,4 +16,13 @@ Alternatively, run it with phonegap:
 $ phonegap run ios
 ```
 
+## Cordova/PhoneGap notes
+Install the following plugins in your local dev environment
+
+### Console logging in xcode
+```
+$ phonegap local plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git
+```
+
+
 

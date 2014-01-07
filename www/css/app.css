@@ -10,3 +10,8 @@
   left: 50%;
   margin: -64px 0px 0px -64px;
 }
+
+#map-canvas {
+    height: 40%;
+    width: 100%;
+}

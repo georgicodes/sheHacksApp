@@ -1,10 +1,16 @@
 <nav-page id="venue">
 
     <!-- content area -->
-    <content has-header="true" scroll="true">
-
+    <content has-header="true" has-footer="false" scroll="false">
         <h2>{{title}}</h2>
 
+        <div id="map-canvas"></div>
+
+        <button ng-click="centerOnMe()" class="button button-block button-positive">
+            show my current location
+        </button>
     </content>
+
+
 
 </nav-page>
