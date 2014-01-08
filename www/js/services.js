@@ -3,9 +3,11 @@ angular.module('sheHacksApp.services', [])
     .factory('MenuService', function () {
 
         var menuItems = [
+            { text: 'Program', iconClass: 'icon ion-clipboard', link: '#/program'},
             { text: 'Venue & Map', iconClass: 'icon ion-map', link: '#/venue'},
-            { text: 'Program', iconClass: 'icon ion-ios7-calendar', link: '#/program'},
-            { text: 'Sponsors', iconClass: 'icon ion-star', link: '#/sponsors'}
+            { text: 'Prizes', iconClass: 'icon ion-icecream', link: '#/prizes'},
+            { text: 'Sponsors', iconClass: 'icon ion-heart', link: '#/sponsors'},
+            { text: 'Thanks', iconClass: 'icon ion-woman', link: '#/about'}
         ];
 
         return {
@@ -17,16 +19,21 @@ angular.module('sheHacksApp.services', [])
 
     .factory('ProgramService', function () {
         var programDays = [
-            {"date": "Friday 20th March, 2014", "program": [
-                {"title": "Arrival & Guest Registration", "time": "6pm"},
-                {"title": "Welcome & Lightening Talks", "time": "7pm"}
+            {"date": "Friday 21st March, 2014", "program": [
+                {"title": "Guest Arrival Registration", "time": "6pm", iconClass: ''},
+                {"title": "Welcome & Lightening Talks", "time": "6.30pm", iconClass: ''},
+                {"title": "Pitches & Group Formation", "time": "7pm", iconClass: ''},
+                {"title": "Dinner", "time": "8pm", iconClass: ''},
+                {"title": "Stat Hacking", "time": "9pm - 12am", iconClass: ''}
             ]},
-            {"date": "Saturday 21st March, 2014", "program": [
-                {"title": "Breakfast & Coffee", "time": "8pm"},
-                {"title": "Welcome & Lightening Talks", "time": "7pm"},
-                {"title": "Welcome & Lightening Talks", "time": "8pm"},
-                {"title": "Welcome & Lightening Talks", "time": "9pm"},
-                {"title": "Welcome & Lightening Talks", "time": "10pm"}
+            {"date": "Saturday 22nd March, 2014", "program": [
+                {"title": "Coffee & Hacking", "time": "8am", iconClass: ''},
+                {"title": "Morning Tea", "time": "10am", iconClass: ''},
+                {"title": "Lunch", "time": "12pm", iconClass: ''},
+                {"title": "30 minute warning till Pitch Time", "time": "4pm", iconClass: ''},
+                {"title": "Project Pitches", "time": "4.30pm", iconClass: ''},
+                {"title": "Judging and Prizes", "time": "5.30pm", iconClass: ''},
+                {"title": "Party Time", "time": "6pm - Late", iconClass: ''}
             ]}
         ];
 
@@ -37,7 +44,6 @@ angular.module('sheHacksApp.services', [])
         }
 
     })
-
 
     .factory('SponsorsService', function () {
         var sponsors = [
@@ -50,6 +56,21 @@ angular.module('sheHacksApp.services', [])
         return {
             all: function () {
                 return sponsors;
+            }
+        }
+
+    })
+
+    .factory('PrizesService', function () {
+        var prizes = [
+            { name: 'Best Use of Search', desc: 'sponsored by Google'},
+            { name: 'Best Use of Social Media', desc: 'sponsored by Mi9'},
+            { name: 'Peoples Choice', desc: 'as voted by audience'}
+        ];
+
+        return {
+            all: function () {
+                return prizes;
             }
         }
 

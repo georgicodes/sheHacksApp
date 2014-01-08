@@ -15,3 +15,8 @@
     height: 40%;
     width: 100%;
 }
+
+.bar .title {
+    font-size: 14px;
+    font-family: 'Share Tech Mono', sans-serif;
+}

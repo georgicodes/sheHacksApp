@@ -53,8 +53,9 @@ angular.module('sheHacksApp.controllers', [])
             });
 
             $scope.map = map;
-//            infowindow.open(map,marker);
+            infowindow.open(map,marker);
         };
+
 
         $scope.centerOnMe = function() {
             if(!$scope.map) {
@@ -77,6 +78,10 @@ angular.module('sheHacksApp.controllers', [])
 
     })
 
+    .controller('RegistrationController', function ($scope, SponsorsService) {
+        $scope.title = "Registration";
+    })
+
     .controller('SponsorsController', function ($scope, SponsorsService) {
         $scope.title = "Sponsors";
 
@@ -87,4 +92,14 @@ angular.module('sheHacksApp.controllers', [])
         $scope.title = "Program";
 
         $scope.schedule = ProgramService.all();
+    })
+
+    .controller('PrizesController', function ($scope, PrizesService) {
+        $scope.title = "Prize Categories";
+
+        $scope.prizes = PrizesService.all();
+    })
+
+    .controller('AboutController', function ($scope, ProgramService) {
+        $scope.title = "About";
     });

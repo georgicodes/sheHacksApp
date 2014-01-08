@@ -18,5 +18,17 @@ sideMenuApp.config(['$routeProvider', function ($routeProvider, $locationProvide
             controller: 'ProgramController',
             templateUrl: 'templates/program.html'
         })
+        .when('/prizes', {
+            controller: 'PrizesController',
+            templateUrl: 'templates/prizes.html'
+        })
+        .when('/about', {
+            controller: 'AboutController',
+            templateUrl: 'templates/about.html'
+        })
+        .when('/registration', {
+            controller: 'RegistrationController',
+            templateUrl: 'templates/registration.html'
+        })
         .otherwise({ redirectTo: '/program' });
 }]);

@@ -2,12 +2,13 @@
 
     <!-- content area -->
     <content has-header="true" scroll="true">
-        <h1>{{title}}</h1>
+        <!--<h1>{{title}}</h1>-->
 
-        <div class="list card">
+        <div class="list">
             <div ng-repeat="item in schedule">
-                <h2>{{item.date}}</h2>
-                <div class="item" ng-repeat="slot in item.program">
+                <div class="item item-divider">{{item.date}}</div>
+                <div class="item item-icon-left" ng-repeat="slot in item.program">
+                    <!--<i class="icon ion-email"></i>-->
                     <h3>{{slot.title}}</h3>
                     <p>{{slot.time}}</p>
                 </div>

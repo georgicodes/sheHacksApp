@@ -1,0 +1,17 @@
+<nav-page id="prizes">
+
+    <!-- content area -->
+    <content has-header="true" scroll="true">
+
+        <h2>{{title}}</h2>
+
+        <div class="list">
+            <div class="item" ng-repeat="prize in prizes">
+                <h2>{{prize.name}}</h2>
+                <p>{{prize.desc}}</p>
+            </div>
+        </div>
+
+    </content>
+
+</nav-page>
