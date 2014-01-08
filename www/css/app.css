@@ -19,8 +19,20 @@
 .bar .title {
     font-size: 14px;
     font-family: 'Share Tech Mono', sans-serif;
+    font-weight: bold;
 }
 
+/* TODO: GK Use less instead of this hacky css*/
+body {
+    font-family: 'Share Tech Mono', sans-serif;
+}
+
+h3 {
+    font-family: 'Share Tech Mono', sans-serif;
+
+}
+
+/*http://www.colourlovers.com/palette/411632/Candy_Almond_Rainbow*/
 .candy-pink {
     background-color: #F39DD4;
 }
@@ -36,3 +48,28 @@
 .candy-yellow {
     background-color: #F8F087;
 }
+.candy-grey {
+    background-color: #dddddd;
+}
+
+/*http://www.colourlovers.com/palette/7315/Pop_Is_Everything*/
+.fluro-pink {
+    background-color: #FF00AA;
+}
+.fluro-purple {
+    background-color: #AA00FF;
+}
+.fluro-blue {
+    background-color: #00AAFF;
+}
+.fluro-green {
+    background-color: #AAFF00;
+}
+.fluro-orange {
+    background-color: #FFAA00;
+}
+
+.item-menu {
+    border-width: 3px;
+}
+/*http://www.colourlovers.com/palette/1250813/Pastel_Rainbow*/

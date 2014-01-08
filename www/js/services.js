@@ -17,23 +17,24 @@ angular.module('sheHacksApp.services', [])
         }
     })
 
+//    TODO: gk fix colour
     .factory('ProgramService', function () {
         var programDays = [
             {"date": "Friday 21st March, 2014", "program": [
-                {"title": "Guest Arrival Registration", "time": "6pm", iconClass: ''},
-                {"title": "Welcome & Lightening Talks", "time": "6.30pm", iconClass: ''},
-                {"title": "Pitches & Group Formation", "time": "7pm", iconClass: ''},
-                {"title": "Dinner", "time": "8pm", iconClass: ''},
-                {"title": "Stat Hacking", "time": "9pm - 12am", iconClass: ''}
+                {"title": "Guest Arrival Registration", "time": "6pm", iconClass: '', colour: "candy-"},
+                {"title": "Welcome & Lightening Talks", "time": "6.30pm", iconClass: '', colour: "candy-" },
+                {"title": "Pitches & Group Formation", "time": "7pm", iconClass: '', colour: "candy-"},
+                {"title": "Dinner", "time": "8pm", iconClass: '', colour: "candy-"},
+                {"title": "Start Hacking", "time": "9pm - 12am", iconClass: '', colour: "candy-"}
             ]},
             {"date": "Saturday 22nd March, 2014", "program": [
-                {"title": "Coffee & Hacking", "time": "8am", iconClass: ''},
-                {"title": "Morning Tea", "time": "10am", iconClass: ''},
-                {"title": "Lunch", "time": "12pm", iconClass: ''},
-                {"title": "30 minute warning till Pitch Time", "time": "4pm", iconClass: ''},
-                {"title": "Project Pitches", "time": "4.30pm", iconClass: ''},
-                {"title": "Judging and Prizes", "time": "5.30pm", iconClass: ''},
-                {"title": "Party Time", "time": "6pm - Late", iconClass: ''}
+                {"title": "Coffee & Hacking", "time": "8am", iconClass: '', colour: "candy-"},
+                {"title": "Morning Tea", "time": "10am", iconClass: '', colour: "candy-"},
+                {"title": "Lunch", "time": "12pm", iconClass: '', colour: "candy-"},
+                {"title": "30 minute warning till Pitch Time", "time": "4pm", iconClass: '', colour: "candy-"},
+                {"title": "Project Pitches", "time": "4.30pm", iconClass: '', colour: "candy-"},
+                {"title": "Judging and Prizes", "time": "5.30pm", iconClass: '', colour: "candy-"},
+                {"title": "Party Time", "time": "6pm - Late", iconClass: '', colour: "candy-"}
             ]}
         ];
 
