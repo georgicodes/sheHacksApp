@@ -1,5 +1,5 @@
 <ul class="list" ng-click="closeMenu()">
-    <a href="{{item.link}}" class="item item-icon-left" ng-repeat="item in list">
+    <a href="{{item.link}}" class="item item-icon-left" ng-repeat="item in list" ng-class="item.colour">
         <i ng-class="item.iconClass"></i>
         <i ng-class="item.iconClass"></i>
         {{item.text}}

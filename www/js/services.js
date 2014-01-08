@@ -3,11 +3,11 @@ angular.module('sheHacksApp.services', [])
     .factory('MenuService', function () {
 
         var menuItems = [
-            { text: 'Program', iconClass: 'icon ion-clipboard', link: '#/program'},
-            { text: 'Venue & Map', iconClass: 'icon ion-map', link: '#/venue'},
-            { text: 'Prizes', iconClass: 'icon ion-icecream', link: '#/prizes'},
-            { text: 'Sponsors', iconClass: 'icon ion-heart', link: '#/sponsors'},
-            { text: 'Thanks', iconClass: 'icon ion-woman', link: '#/about'}
+            { text: 'Program', iconClass: 'icon ion-clipboard', colour: "candy-pink", link: '#/program'},
+            { text: 'Venue & Map', iconClass: 'icon ion-map', colour: "candy-lav", link: '#/venue'},
+            { text: 'Prizes', iconClass: 'icon ion-icecream', colour: "candy-blue", link: '#/prizes'},
+            { text: 'Sponsors', iconClass: 'icon ion-heart', colour: "candy-green", link: '#/sponsors'},
+            { text: 'Thanks', iconClass: 'icon ion-woman', colour: "candy-yellow", link: '#/about'}
         ];
 
         return {
