@@ -6,3 +6,19 @@
 .cursive-font {
   font-family: $font-family-heading;
 }
+
+.page-title {
+  //margin:15px 15px 0px 15px;
+  //margin-bottom: 0px;
+  //margin-top: 15px;
+  font-family: $font-family-heading;
+}
+
+.item-divider {
+  background-color: $candy-pink;
+  color: $dark;
+}
+
+.item h2 {
+  color: $royal;
+}

@@ -100,6 +100,8 @@ angular.module('sheHacksApp.controllers', [])
         $scope.prizes = PrizesService.all();
     })
 
-    .controller('AboutController', function ($scope, ProgramService) {
+    .controller('AboutController', function ($scope, CreditsService) {
         $scope.title = "About";
+
+        $scope.people = CreditsService.all();
     });

@@ -1,15 +1,21 @@
-.item-menu {
+.app-side-menu {
     border-width: 3px;
 }
 
 #map-canvas {
-    height: 40%;
+    height: 50%;
     width: 100%;
 }
 
-/*.bar .title {*/
-    /*font-size: 14px;*/
-    /*font-family: 'Share Tech Mono', sans-serif;*/
-    /*font-weight: bold;*/
-/*}*/
+.footer-menu-logo {
+    bottom: 0;
+}
+.bar .title {
+    font-size: 14px;
+}
+
+.credits-list {
+    margin-bottom: 0px;
+}
+
 

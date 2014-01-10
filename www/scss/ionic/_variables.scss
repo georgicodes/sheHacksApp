@@ -47,7 +47,7 @@ $headings-font-weight:           500 !default;
 $headings-line-height:           1.1 !default;
 
 $base-background-color:          #fff;
-$base-color:                     #000;
+$base-color:                     $dark;
 
 $link-color:                     $positive !default;
 $link-hover-color:               darken($link-color, 15%) !default;

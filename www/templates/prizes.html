@@ -3,11 +3,55 @@
     <!-- content area -->
     <content has-header="true" scroll="true">
 
-        <h2>{{title}}</h2>
+        <h2 class="padding cursive-font">{{title}}</h2>
+
+        <!--<div class="row">-->
+            <!--<div class="col candy-pink-bg">-->
+                <!--<div class="card">-->
+                    <!--<div class="item">-->
+                        <!--<h2>Best Overall App</h2>-->
+
+                        <!--<p>audience choice award</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col candy-purple-bg">-->
+                    <!--<div class="card">-->
+                        <!--<div class="item">-->
+                            <!--<h2>Best Overall App</h2>-->
+
+                            <!--<p>audience choice award</p>-->
+                        <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="col candy-blue-bg">-->
+                <!--<div class="card">-->
+                    <!--<div class="item">-->
+                        <!--<h2>Best Overall App</h2>-->
+
+                        <!--<p>audience choice award</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col candy-green-bg">-->
+                    <!--<div class="card">-->
+                        <!--<div class="item">-->
+                            <!--<h2>Best Overall App</h2>-->
+
+                            <!--<p>audience choice award</p>-->
+                        <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div class="list">
-            <div class="item" ng-repeat="prize in prizes">
+            <div class="item item-icon-left" ng-repeat="prize in prizes">
+                <i class="icon ion-icecream"></i>
+
                 <h2>{{prize.name}}</h2>
+
                 <p>{{prize.desc}}</p>
             </div>
         </div>

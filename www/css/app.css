@@ -2543,7 +2543,7 @@ body, .ionic-body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  color: black;
+  color: #444444;
   word-wrap: break-word;
   font-size: 14px;
   font-family: "ABeeZee", Helvetica, Arial, sans-serif;
@@ -2786,7 +2786,7 @@ cite {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: black;
+  color: #444444;
   font-weight: 500;
   font-family: "ABeeZee", Helvetica, Arial, sans-serif;
   line-height: 1.1; }
@@ -2898,6 +2898,9 @@ address {
   margin-bottom: 20px;
   font-style: normal;
   line-height: 1.42857; }
+
+a {
+  color: #f39dd4; }
 
 a.subdued {
   padding-right: 10px;
@@ -3048,7 +3051,7 @@ a.subdued {
 
 .action-sheet-title {
   padding: 10px;
-  color: #666666;
+  color: #aaaaaa;
   text-align: center;
   font-size: 12px; }
 
@@ -6604,3 +6607,13 @@ a.button {
 
 .cursive-font {
   font-family: "Lobster", Georgia, "Times New Roman", Times, serif; }
+
+.page-title {
+  font-family: "Lobster", Georgia, "Times New Roman", Times, serif; }
+
+.item-divider {
+  background-color: #f39dd4;
+  color: #444444; }
+
+.item h2 {
+  color: #660099; }

@@ -16,13 +16,27 @@
                 <!--Settings-->
             <!--</a>-->
         <!--</div>-->
+        <h2 class="padding cursive-font">{{title}}</h2>
+
+        <!--<button class="button button-outline button-positive">-->
+            <!--Fri-->
+        <!--</button>-->
+        <!--<button class="button button-outline button-calm">-->
+            <!--Sat-->
+        <!--</button>-->
+
+
         <div class="list">
-            <div ng-repeat="item in schedule">
+            <div ng-repeat="item in schedule" class="padding-bottom padding-top">
                 <!--<div class="item item-divider">{{item.date}}</div>-->
-                <h3 class="cursive-font">{{item.date}}</h3>
+                <!--<h4 class="cursive-font">{{item.date}}</h4>-->
+                <div class="item item-divider text-center">
+                    {{item.date}}
+                </div>
                 <div class="item item-icon-left tech-font" ng-repeat="slot in item.program" ng-class="slot.colour">
                     <!--<i class="icon ion-email"></i>-->
                     <h2>{{slot.title}}</h2>
+
                     <p>{{slot.time}}</p>
                 </div>
             </div>

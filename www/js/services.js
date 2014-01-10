@@ -7,7 +7,7 @@ angular.module('sheHacksApp.services', [])
             { text: 'Venue & Map', iconClass: 'icon ion-map', colour: "candy-purple-bg", link: '#/venue'},
             { text: 'Prizes', iconClass: 'icon ion-icecream', colour: "candy-blue-bg", link: '#/prizes'},
             { text: 'Sponsors', iconClass: 'icon ion-heart', colour: "candy-green-bg", link: '#/sponsors'},
-            { text: 'Thanks', iconClass: 'icon ion-woman', colour: "candy-yellow-bg", link: '#/about'}
+            { text: 'Credit', iconClass: 'icon ion-woman', colour: "candy-yellow-bg", link: '#/about'}
         ];
 
         return {
@@ -31,7 +31,7 @@ angular.module('sheHacksApp.services', [])
                 {"title": "Coffee & Hacking", "time": "8am", iconClass: '', colour: "candy-"},
                 {"title": "Morning Tea", "time": "10am", iconClass: '', colour: "candy-"},
                 {"title": "Lunch", "time": "12pm", iconClass: '', colour: "candy-"},
-                {"title": "30 minute warning till Pitch Time", "time": "4pm", iconClass: '', colour: "candy-"},
+                {"title": "30 Minute Warning Till Pitch Time", "time": "4pm", iconClass: '', colour: "candy-"},
                 {"title": "Project Pitches", "time": "4.30pm", iconClass: '', colour: "candy-"},
                 {"title": "Judging and Prizes", "time": "5.30pm", iconClass: '', colour: "candy-"},
                 {"title": "Party Time", "time": "6pm - Late", iconClass: '', colour: "candy-"}
@@ -49,9 +49,9 @@ angular.module('sheHacksApp.services', [])
     .factory('SponsorsService', function () {
         var sponsors = [
             { name: 'Google', src: 'img/google.jpg', link: 'www.google.com.au'},
-            { name: 'Atlassian', src: 'img/google.jpg', link: 'www.atlassian.com'},
-            { name: 'Github', src: 'img/google.jpg', link: 'www.github.com'},
-            { name: 'Mi9', src: 'img/google.jpg', link: 'www.google.com.au'}
+            { name: 'Atlassian', src: 'img/atlassian-logo.jpeg', link: 'www.atlassian.com'},
+            { name: 'Github', src: 'img/github-logo.jpeg', link: 'www.github.com'},
+            { name: 'Microsoft', src: 'img/microsoft.jpeg', link: 'www.microsoft.com.au'}
         ];
 
         return {
@@ -72,6 +72,23 @@ angular.module('sheHacksApp.services', [])
         return {
             all: function () {
                 return prizes;
+            }
+        }
+
+    })
+
+    .factory('CreditsService', function () {
+        var people = [
+            { name: 'Georgi Knox', desc: 'App Developer, Event Organiser'},
+            { name: 'Denise Fernandez', desc: 'App Developer, Event Organiser'},
+            { name: 'Sera Prince McGill', desc: 'Event Organiser'},
+            { name: 'Peggy Kuo', desc: 'Event Organiser'},
+            { name: 'Kris Howard', desc: 'Event Organiser'}
+        ];
+
+        return {
+            all: function () {
+                return people;
             }
         }
 
