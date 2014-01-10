@@ -5,11 +5,9 @@
     <title>Ionic Seed</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- ionic css -->
-    <link href="css/ionic.css" rel="stylesheet">
-
     <!-- app css -->
-    <link href="css/app.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet"> <!-- SCSS compiled -->
+    <link href="css/app-more.css" rel="stylesheet">
 
     <!-- font awesome -->
     <!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">-->
@@ -17,6 +15,8 @@
 
     <!-- google web fonts - still WIP -->
     <link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 
     <!-- ionic/angularjs scripts -->
     <script src="js/lib/ionic/ionic.js"></script>
@@ -49,10 +49,11 @@
 
         <!-- Center content -->
         <pane side-menu-content nav-router>
-            <header class="bar bar-header">
-                <a class="button button-outline icon-right ion-navicon button-royal" ng-click="openLeft()"></a>
-                <!--<button class="button button-icon" ng-click="openLeft()"><i class="icon ion-navicon"></i></button>-->
-                <h1 class="title royal">She Hacks | Girl Geek Sydney</h1>
+            <header class="bar bar-header bar-royal">
+                <!--<a class="button button-outline icon-right ion-navicon button-royal" ng-click="openLeft()"></a>-->
+                <!--<a class="button button-outline icon-right ion-navicon" ng-click="openLeft()"></a>-->
+                <button class="button button-icon" ng-click="openLeft()"><i class="icon ion-navicon"></i></button>
+                <h1 class="title tech-font">She Hacks | Girl Geek Sydney</h1>
             </header>
             <!-- where the content of each page will be rendered -->
             <ng-view></ng-view>
@@ -61,7 +62,7 @@
         <!-- Left Side Menu -->
         <side-menu side="left">
             <header class="bar bar-header">
-                <h1 class="title royal">Menu</h1>
+                <h1 class="title royal tech-font">#shehacks</h1>
             </header>
             <content has-header="true">
                 <ng-include src="'templates/menu.html'"></ng-include>

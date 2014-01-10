@@ -2,13 +2,27 @@
 
     <!-- content area -->
     <content has-header="true" scroll="true">
+        <!--<div class="tabs tabs-icon-top">-->
+            <!--<a class="tab-item">-->
+                <!--<i class="icon ion-home"></i>-->
+                <!--Home-->
+            <!--</a>-->
+            <!--<a class="tab-item">-->
+                <!--<i class="icon ion-star"></i>-->
+                <!--Favorites-->
+            <!--</a>-->
+            <!--<a class="tab-item">-->
+                <!--<i class="icon ion-gear-a"></i>-->
+                <!--Settings-->
+            <!--</a>-->
+        <!--</div>-->
         <div class="list">
             <div ng-repeat="item in schedule">
                 <!--<div class="item item-divider">{{item.date}}</div>-->
-                <h3>{{item.date}}</h3>
-                <div class="item item-icon-left" ng-repeat="slot in item.program" ng-class="slot.colour">
+                <h3 class="cursive-font">{{item.date}}</h3>
+                <div class="item item-icon-left tech-font" ng-repeat="slot in item.program" ng-class="slot.colour">
                     <!--<i class="icon ion-email"></i>-->
-                    <h3>{{slot.title}}</h3>
+                    <h2>{{slot.title}}</h2>
                     <p>{{slot.time}}</p>
                 </div>
             </div>
