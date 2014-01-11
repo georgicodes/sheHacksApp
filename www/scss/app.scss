@@ -3,6 +3,7 @@
 .tech-font {
   font-family: $font-family-serif;
 }
+
 .cursive-font {
   font-family: $font-family-heading;
 }
@@ -21,4 +22,27 @@
 
 .item h2 {
   color: $royal;
+}
+
+.venue-icon-item {
+  border-width: 0px;
+  background-color: $candy-purple;
+  //padding-right: 70px;
+}
+
+.venue-marker-item {
+  padding-left: 52px;
+}
+
+.venue-marker-icon {
+  font-size: 28px;
+
+}
+
+.venue-map-icon {
+  font-size: 24px;
+}
+
+h2 {
+  margin-bottom: 0px;
 }
