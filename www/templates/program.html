@@ -33,11 +33,9 @@
                 <div class="item item-divider text-center">
                     <i class="ion-calendar venue-map-icon"></i> {{item.date}}
                 </div>
-                <div class="item item-icon-left tech-font" ng-repeat="slot in item.program" ng-class="slot.colour">
-                    <!--<i class="icon ion-email"></i>-->
-                    <h2>{{slot.title}}</h2>
-
-                    <p>{{slot.time}}</p>
+                <div class="item item-text-wrap" ng-repeat="slot in item.program" ng-class="slot.colour">
+                    <h2><span class="program-time tech-font" ng-bind-html="slot.time"></span> {{slot
+                        .title}}</h2>
                 </div>
             </div>
         </div>
