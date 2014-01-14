@@ -1,6 +1,6 @@
 angular.module('sheHacksApp.controllers', [])
 
-    .controller('MenuController', function ($scope, MenuService) {
+    .controller('MenuController', function ($scope, Platform, MenuService) {
         // "MenuService" is a service returning mock data (services.js)
         $scope.list = MenuService.all();
 
@@ -11,6 +11,11 @@ angular.module('sheHacksApp.controllers', [])
         $scope.closeMenu = function () {
             $scope.sideMenuController.close();
         }
+
+        Platform.ready(function() {
+            // hide the status bar using the StatusBar plugin
+            StatusBar.hide();
+        });
     })
 
     .controller('VenueController', function ($scope) {
@@ -86,6 +91,12 @@ angular.module('sheHacksApp.controllers', [])
         $scope.title = "Sponsors";
 
         $scope.sponsors = SponsorsService.all();
+
+        // opens links in browser instead of on top of app
+        $scope.openLink = function(link) {
+            console.log(link);
+            window.open('http://'+link, '_system');
+        }
     })
 
     .controller('ProgramController', function ($scope, ProgramService) {

@@ -9,9 +9,6 @@
 }
 
 .page-title {
-  //margin:15px 15px 0px 15px;
-  //margin-bottom: 0px;
-  //margin-top: 15px;
   font-family: $font-family-heading;
 }
 
@@ -27,7 +24,6 @@
 .venue-icon-item {
   border-width: 0px;
   background-color: $candy-purple;
-  //padding-right: 70px;
 }
 
 .venue-marker-item {
@@ -50,5 +46,9 @@ h2 {
 .program-time {
   color: $dark;
   margin-right: 15px;
-  //font-style: $font-family-serif;
+}
+
+a {
+  text-decoration: underline;
+  color: $candy-pink;
 }

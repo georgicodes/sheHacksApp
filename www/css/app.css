@@ -6637,3 +6637,7 @@ h2 {
 .program-time {
   color: #444444;
   margin-right: 15px; }
+
+a {
+  text-decoration: underline;
+  color: #f39dd4; }
