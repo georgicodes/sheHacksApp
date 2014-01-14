@@ -17,11 +17,12 @@ $ phonegap run ios
 ```
 
 ## Cordova/PhoneGap notes
-Install the following plugins in your local dev environment
+Install the following plugins in your local dev environment. You will need Cordova 3.3.1 for the statusbar plugin to work.
 
-### Console logging in xcode
 ```
 $ phonegap local plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git
+$ cordova plugin add org.apache.cordova.inappbrowser
+$ cordova plugin add org.apache.cordova.statusbar
 ```
 
 
