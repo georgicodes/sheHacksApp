@@ -90,7 +90,11 @@ angular.module('sheHacksApp.controllers', [])
     .controller('SponsorsController', function ($scope, SponsorsService) {
         $scope.title = "Sponsors";
 
-        $scope.sponsors = SponsorsService.all();
+        SponsorsService.query(function(response) {
+            $scope.sponsors = response;
+
+        })
+
 
         // opens links in browser instead of on top of app
         $scope.openLink = function(link) {

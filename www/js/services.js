@@ -1,4 +1,4 @@
-angular.module('sheHacksApp.services', [])
+angular.module('sheHacksApp.services', ['ngResource', 'sheHacksApp.configuration'])
 
     .factory('MenuService', function () {
 
@@ -46,20 +46,10 @@ angular.module('sheHacksApp.services', [])
 
     })
 
-    .factory('SponsorsService', function () {
-        var sponsors = [
-            { name: 'Google', src: 'img/google.jpg', link: 'www.google.com.au'},
-            { name: 'Atlassian', src: 'img/atlassian-logo.jpeg', link: 'www.atlassian.com'},
-            { name: 'Github', src: 'img/github-logo.jpeg', link: 'www.github.com'},
-            { name: 'Microsoft', src: 'img/microsoft.jpeg', link: 'www.microsoft.com.au'}
-        ];
-
-        return {
-            all: function () {
-                return sponsors;
-            }
-        }
-
+    .factory('SponsorsService', function ($resource, API_END_POINT) {
+        return $resource(API_END_POINT + '/sponsors', {
+            query: { method: 'GET', isArray: true }
+        }) ;
     })
 
     .factory('PrizesService', function () {

@@ -1,4 +1,4 @@
-var sideMenuApp = angular.module('sheHacksApp', ['ionic', 'ngRoute', 'sheHacksApp.controllers', 'sheHacksApp.services']);
+var sideMenuApp = angular.module('sheHacksApp', ['ionic', 'ngRoute', 'sheHacksApp.controllers', 'sheHacksApp.services', 'sheHacksApp.configuration']);
 
 sideMenuApp.config(function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
