@@ -24,7 +24,7 @@ angular.module('sheHacksApp.services', ['ngResource', 'sheHacksApp.configuration
                 {"title": "Guest Arrival & Registration", "time": "18:00"},
                 {"title": "Welcome & Lightening Talks", "time": "18:30"},
                 {"title": "Pitches & Group Formation", "time": "19:00"},
-                {"title": "Dinner", "time": "20:00", iconClass: ''},
+                {"title": "Dinner", "time": "20:00"},
                 {"title": "Start Hacking", "time": "20:00-<br>24:00"}
             ]},
             {"date": "SATURDAY 22nd MARCH, 2014", "program": [
