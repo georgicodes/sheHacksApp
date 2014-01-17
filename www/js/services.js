@@ -52,19 +52,10 @@ angular.module('sheHacksApp.services', ['ngResource', 'sheHacksApp.configuration
         }) ;
     })
 
-    .factory('PrizesService', function () {
-        var prizes = [
-            { name: 'Best Use of Search', desc: 'sponsored by Google'},
-            { name: 'Best Use of Social Media', desc: 'sponsored by Microsoft'},
-            { name: 'Peoples Choice', desc: 'as voted by audience'}
-        ];
-
-        return {
-            all: function () {
-                return prizes;
-            }
-        }
-
+    .factory('PrizesService', function ($resource, API_END_POINT) {
+        return $resource(API_END_POINT + '/prizes', {
+            query: { method: 'GET', isArray: true }
+        }) ;
     })
 
     .factory('CreditsService', function () {

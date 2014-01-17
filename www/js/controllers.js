@@ -93,8 +93,7 @@ angular.module('sheHacksApp.controllers', [])
         SponsorsService.query(function(response) {
             $scope.sponsors = response;
 
-        })
-
+        });
 
         // opens links in browser instead of on top of app
         $scope.openLink = function(link) {
@@ -112,7 +111,10 @@ angular.module('sheHacksApp.controllers', [])
     .controller('PrizesController', function ($scope, PrizesService) {
         $scope.title = "Prize Categories";
 
-        $scope.prizes = PrizesService.all();
+        PrizesService.query(function(response) {
+            $scope.prizes = response;
+
+        });
     })
 
     .controller('AboutController', function ($scope, CreditsService) {
