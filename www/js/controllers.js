@@ -12,17 +12,18 @@ angular.module('sheHacksApp.controllers', [])
             $scope.sideMenuController.close();
         }
 
-        Platform.ready(function() {
+        Platform.ready(function () {
             // hide the status bar using the StatusBar plugin
             StatusBar.hide();
         });
+
     })
 
     .controller('VenueController', function ($scope) {
         $scope.title = "Venue & Map";
 
         <!-- there were issues calling google.maps.event.addDomListener(window, 'load', initialize); so I am using this way of calling init instead -->
-        $scope.$on('$viewContentLoaded', function() {
+        $scope.$on('$viewContentLoaded', function () {
             init();
         });
 
@@ -52,31 +53,25 @@ angular.module('sheHacksApp.controllers', [])
             });
 
             // Stop the side bar from dragging when mousedown/tapdown on the map
-            google.maps.event.addDomListener(document.getElementById('map-canvas'), 'mousedown', function(e) {
+            google.maps.event.addDomListener(document.getElementById('map-canvas'), 'mousedown', function (e) {
                 e.preventDefault();
                 return false;
             });
 
             $scope.map = map;
-            infowindow.open(map,marker);
+            infowindow.open(map, marker);
         };
 
 
-        $scope.centerOnMe = function() {
-            if(!$scope.map) {
+        $scope.centerOnMe = function () {
+            if (!$scope.map) {
                 console.log("cannot find map")
                 return;
             }
 
-//            $scope.loading = Loading.show({
-//                content: 'Getting current location...',
-//                showBackdrop: false
-//            });
-
-            navigator.geolocation.getCurrentPosition(function(pos) {
+            navigator.geolocation.getCurrentPosition(function (pos) {
                 $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-//                $scope.loading.hide();
-            }, function(error) {
+            }, function (error) {
                 console.log('Unable to get location: ' + error.message);
             });
         };
@@ -90,15 +85,15 @@ angular.module('sheHacksApp.controllers', [])
     .controller('SponsorsController', function ($scope, SponsorsService) {
         $scope.title = "Sponsors";
 
-        SponsorsService.query(function(response) {
+        SponsorsService.query(function (response) {
             $scope.sponsors = response;
 
         });
 
         // opens links in browser instead of on top of app
-        $scope.openLink = function(link) {
+        $scope.openLink = function (link) {
             console.log(link);
-            window.open('http://'+link, '_system');
+            window.open('http://' + link, '_system');
         }
     })
 
@@ -110,10 +105,8 @@ angular.module('sheHacksApp.controllers', [])
 
     .controller('PrizesController', function ($scope, PrizesService) {
         $scope.title = "Prize Categories";
-
-        PrizesService.query(function(response) {
-            $scope.prizes = response;
-
+        PrizesService.getRecentPrizes().then(function(data){
+            $scope.prizes = data;
         });
     })
 

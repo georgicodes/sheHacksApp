@@ -1,4 +1,4 @@
-angular.module('sheHacksApp.services', ['ngResource', 'sheHacksApp.configuration'])
+angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateModule', 'ngResource', 'sheHacksApp.configuration'])
 
     .factory('MenuService', function () {
 
@@ -48,13 +48,34 @@ angular.module('sheHacksApp.services', ['ngResource', 'sheHacksApp.configuration
     .factory('SponsorsService', function ($resource, API_END_POINT) {
         return $resource(API_END_POINT + '/sponsors', {
             query: { method: 'GET', isArray: true }
-        }) ;
+        });
     })
 
-    .factory('PrizesService', function ($resource, API_END_POINT) {
-        return $resource(API_END_POINT + '/prizes', {
-            query: { method: 'GET', isArray: true }
-        }) ;
+    .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
+        return {
+            getRecentPrizes: function () {
+                var prizes, request, deferred, promise;
+                deferred = deferredUpdateService.defer();
+                promise = deferred.promise;
+                prizes = $resource(API_END_POINT + '/prizes', {
+                    query: { method: 'GET', isArray: true }
+                });
+                request = {};
+
+                // here we always query the RESTful service, but if we already have values in
+                // storage they are displayed first, then the storage is updated when the RESTful request returns
+                prizes.query(request, function (response) {
+                    localStorageService.add('prizes',response);
+                    deferred.resolve(response);
+                });
+
+                var response = localStorageService.get('prizes');
+                if(response != undefined)  {
+                    deferred.resolve(response);
+                }
+                return promise;
+            }
+        }
     })
 
     .factory('CreditsService', function () {
