@@ -45,35 +45,26 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
 
     })
 
-    .factory('SponsorsService', function ($resource, API_END_POINT) {
-        return $resource(API_END_POINT + '/sponsors', {
-            query: { method: 'GET', isArray: true }
-        });
-    })
-
-    .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
+    .factory('SponsorsService', function ($resource, API_END_POINT, localStorageService, $q) {
         return {
-            getRecentPrizes: function () {
-                var prizes, request, deferred, promise;
-                deferred = deferredUpdateService.defer();
-                promise = deferred.promise;
-                prizes = $resource(API_END_POINT + '/prizes', {
+            getSponsors: function () {
+                var resource = $resource(API_END_POINT + '/sponsors', {
                     query: { method: 'GET', isArray: true }
                 });
-                request = {};
 
-                // here we always query the RESTful service, but if we already have values in
-                // storage they are displayed first, then the storage is updated when the RESTful request returns
-                prizes.query(request, function (response) {
-                    localStorageService.add('prizes',response);
-                    deferred.resolve(response);
+                return queryAndUpdateLocalStorage(localStorageService, $q, 'sponsors', resource);
+            }
+        }
+    })
+
+    .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, $q) {
+        return {
+            getPrizes: function () {
+                var resource = $resource(API_END_POINT + '/prizes', {
+                    query: { method: 'GET', isArray: true }
                 });
 
-                var response = localStorageService.get('prizes');
-                if(response != undefined)  {
-                    deferred.resolve(response);
-                }
-                return promise;
+                return queryAndUpdateLocalStorage(localStorageService, $q, 'prizes', resource);
             }
         }
     })
@@ -95,3 +86,25 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
 
     })
 ;
+
+function queryAndUpdateLocalStorage(localStorageService, $q, storageName, resource) {
+    // here we always query the RESTful service, but if we already have values in
+    // storage they are displayed first, then the storage is updated when the RESTful request returns
+    var deferred, promise;
+    deferred = $q.defer();
+    promise = deferred.promise;
+
+    resource.query(function (response) {
+        console.log("querying REST resource")
+        localStorageService.add(storageName, response);
+        deferred.resolve(response);
+    });
+
+    var response = localStorageService.get(storageName);
+    if (response != undefined) {
+        console.log("querying storage")
+        deferred.resolve(response);
+    }
+
+    return promise;
+}

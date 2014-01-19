@@ -85,9 +85,8 @@ angular.module('sheHacksApp.controllers', [])
     .controller('SponsorsController', function ($scope, SponsorsService) {
         $scope.title = "Sponsors";
 
-        SponsorsService.query(function (response) {
-            $scope.sponsors = response;
-
+        SponsorsService.getSponsors().then(function(data){
+            $scope.sponsors = data;
         });
 
         // opens links in browser instead of on top of app
@@ -105,7 +104,7 @@ angular.module('sheHacksApp.controllers', [])
 
     .controller('PrizesController', function ($scope, PrizesService) {
         $scope.title = "Prize Categories";
-        PrizesService.getRecentPrizes().then(function(data){
+        PrizesService.getPrizes().then(function(data){
             $scope.prizes = data;
         });
     })
