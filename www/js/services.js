@@ -17,7 +17,6 @@ angular.module('sheHacksApp.services', ['ngResource', 'sheHacksApp.configuration
         }
     })
 
-//    TODO: gk fix colour
     .factory('ProgramService', function () {
         var programDays = [
             {"date": "FRIDAY 21st MARCH, 2014", "program": [

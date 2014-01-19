@@ -25,5 +25,10 @@ $ cordova plugin add org.apache.cordova.inappbrowser
 $ cordova plugin add org.apache.cordova.statusbar
 ```
 
+## Icon Generation
+See app_assets folder for PSDs
+
+Websites: http://ticons.fokkezb.nl/
+
 
 
