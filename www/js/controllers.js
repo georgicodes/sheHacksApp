@@ -71,8 +71,6 @@ angular.module('sheHacksApp.controllers', [])
 
             navigator.geolocation.getCurrentPosition(function (pos) {
                 $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            }, function (error) {
-                console.log('Unable to get location: ' + error.message);
             });
         };
 
@@ -85,7 +83,7 @@ angular.module('sheHacksApp.controllers', [])
     .controller('SponsorsController', function ($scope, SponsorsService) {
         $scope.title = "Sponsors";
 
-        SponsorsService.getSponsors().then(function(data){
+        SponsorsService.getSponsors().then(function (data) {
             $scope.sponsors = data;
         });
 
@@ -104,7 +102,7 @@ angular.module('sheHacksApp.controllers', [])
 
     .controller('PrizesController', function ($scope, PrizesService) {
         $scope.title = "Prize Categories";
-        PrizesService.getPrizes().then(function(data){
+        PrizesService.getPrizes().then(function (data) {
             $scope.prizes = data;
         });
     })
