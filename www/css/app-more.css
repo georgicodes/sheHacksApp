@@ -22,4 +22,23 @@
     margin-bottom: 0px;
 }
 
+@font-face {
+    font-family: 'Share Tech Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(../fonts/ShareTechMono-Regular.woff) format('woff');
+}
+@font-face {
+    font-family: 'ABeeZee';
+    font-style: normal;
+    font-weight: 400;
+    src: local('ABeeZee'), local('ABeeZee-Regular'), url(../fonts/ABeeZee-Regular.woff) format('woff');
+}
+@font-face {
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lobster'), url(../fonts/Lobster.woff) format('woff');
+}
+
 
