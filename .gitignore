@@ -2,7 +2,6 @@
 npm-debug.log
 *.keystore
 *.sw*
-platforms/^.*
 
 # Intellij
 .idea/
