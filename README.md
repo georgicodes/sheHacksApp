@@ -24,8 +24,11 @@ $ phonegap local plugin add https://git-wip-us.apache.org/repos/asf/cordova-plug
 $ cordova plugin add org.apache.cordova.inappbrowser
 $ cordova plugin add org.apache.cordova.statusbar
 ```
+## Getting icons into IOS
+Copy `app_asset/icons` and `app_assets/splash` to the `platforms/ios/Resource/` directory. Replace whats in `icons` and `splah`. 
+Then remove app from phone, select Program > Clean from XCode and then deploy to phone.
 
-## Icon Generation
+## Icon & SplashScreen Generation
 See app_assets folder for PSDs
 
 Websites: http://ticons.fokkezb.nl/
