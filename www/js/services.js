@@ -45,26 +45,26 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
 
     })
 
-    .factory('SponsorsService', function ($resource, API_END_POINT, localStorageService, $q) {
+    .factory('SponsorsService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
         return {
             getSponsors: function () {
                 var resource = $resource(API_END_POINT + '/sponsors', {
                     query: { method: 'GET', isArray: true }
                 });
 
-                return queryAndUpdateLocalStorage(localStorageService, $q, 'sponsors', resource);
+                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'sponsors', resource);
             }
         }
     })
 
-    .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, $q) {
+    .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
         return {
             getPrizes: function () {
                 var resource = $resource(API_END_POINT + '/prizes', {
                     query: { method: 'GET', isArray: true }
                 });
 
-                return queryAndUpdateLocalStorage(localStorageService, $q, 'prizes', resource);
+                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'prizes', resource);
             }
         }
     })
@@ -87,11 +87,11 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
     })
 ;
 
-function queryAndUpdateLocalStorage(localStorageService, $q, storageName, resource) {
+function queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, storageName, resource) {
     // here we always query the RESTful service, but if we already have values in
     // storage they are displayed first, then the storage is updated when the RESTful request returns
     var deferred, promise;
-    deferred = $q.defer();
+    deferred = deferredUpdateService.defer();
     promise = deferred.promise;
 
     resource.query(function (response) {
