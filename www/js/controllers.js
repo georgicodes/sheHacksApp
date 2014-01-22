@@ -21,10 +21,17 @@ angular.module('sheHacksApp.controllers', [])
 
     .controller('VenueController', function ($scope) {
         $scope.title = "Venue & Map";
+        $scope.noNetwork = false;
 
         <!-- there were issues calling google.maps.event.addDomListener(window, 'load', initialize); so I am using this way of calling init instead -->
         $scope.$on('$viewContentLoaded', function () {
-            init();
+            // We need to check for connection status before attempting to connect to the google maps API otherwise bad things happen
+            if (getConnectionStatus() == 'online'){
+                init();
+            } else {
+                $scope.noNetwork = true;
+                console.log("no network detected, cannot initialize map")
+            }
         });
 
         function init() {
@@ -39,8 +46,7 @@ angular.module('sheHacksApp.controllers', [])
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
-            var map = new google.maps.Map(document.getElementById("map-canvas"),
-                mapOptions);
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
             var marker = new google.maps.Marker({
                 position: googlePos,
@@ -114,3 +120,8 @@ angular.module('sheHacksApp.controllers', [])
             $scope.people = data;
         })
     });
+
+// HTML5 way of determining online/offline status
+function getConnectionStatus() {
+    return navigator.onLine ? 'online' : 'offline';
+}

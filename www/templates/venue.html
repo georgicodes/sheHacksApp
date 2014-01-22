@@ -4,7 +4,8 @@
     <content has-header="true" has-footer="false" scroll="false">
         <h2 class="padding cursive-font">{{title}}</h2>
 
-        <div id="map-canvas"></div>
+        <div ng-show="noNetwork">Please connect to a network to view venue map.</div>
+        <div ng-hide="noNetwork" id="map-canvas"></div>
 
         <div class="list no-margin-bottom">
             <label class="item item-input candy-purple-bg">
