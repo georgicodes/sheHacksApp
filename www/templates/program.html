@@ -2,40 +2,17 @@
 
     <!-- content area -->
     <content has-header="true" scroll="true">
-        <!--<div class="tabs tabs-icon-top">-->
-            <!--<a class="tab-item">-->
-                <!--<i class="icon ion-home"></i>-->
-                <!--Home-->
-            <!--</a>-->
-            <!--<a class="tab-item">-->
-                <!--<i class="icon ion-star"></i>-->
-                <!--Favorites-->
-            <!--</a>-->
-            <!--<a class="tab-item">-->
-                <!--<i class="icon ion-gear-a"></i>-->
-                <!--Settings-->
-            <!--</a>-->
-        <!--</div>-->
         <h2 class="padding cursive-font">{{title}}</h2>
-
-        <!--<button class="button button-outline button-positive">-->
-            <!--Fri-->
-        <!--</button>-->
-        <!--<button class="button button-outline button-calm">-->
-            <!--Sat-->
-        <!--</button>-->
-
 
         <div class="list">
             <div ng-repeat="item in schedule" class="padding-bottom padding-top">
-                <!--<div class="item item-divider">{{item.date}}</div>-->
-                <!--<h4 class="cursive-font">{{item.date}}</h4>-->
                 <div class="item item-divider text-center">
                     <i class="ion-calendar venue-map-icon"></i> {{item.date}}
                 </div>
                 <div class="item item-text-wrap" ng-repeat="slot in item.program" ng-class="slot.colour">
-                    <h2><span class="program-time tech-font" ng-bind-html="slot.time"></span> {{slot
-                        .title}}</h2>
+                    <h2><span class="program-time tech-font" ng-bind-html="slot.time"></span>
+                        {{slot.title}}
+                    </h2>
                 </div>
             </div>
         </div>
