@@ -30,7 +30,6 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
                 {"title": "Coffee & Hacking", "time": "09:00"},
                 {"title": "Morning Tea", "time": "10:00"},
                 {"title": "Lunch", "time": "12:00"},
-                {"title": "30 Minute Warning Till Pitches", "time": "16:00"},
                 {"title": "Team Pitches", "time": "16:30"},
                 {"title": "Judging and Prizes", "time": "15:30"},
                 {"title": "Party Time", "time": "18:00-<br>Late"}
@@ -69,21 +68,16 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
         }
     })
 
-    .factory('CreditsService', function () {
-        var people = [
-            { name: 'Georgi Knox', desc: 'App Developer, Event Organiser'},
-            { name: 'Denise Fernandez', desc: 'App Developer, Event Organiser'},
-            { name: 'Sera Prince McGill', desc: 'Event Organiser'},
-            { name: 'Peggy Kuo', desc: 'Event Organiser'},
-            { name: 'Kris Howard', desc: 'Event Organiser'}
-        ];
-
+    .factory('CreditsService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
         return {
-            all: function () {
-                return people;
+            getCredits: function () {
+                var resource = $resource(API_END_POINT + '/credits', {
+                    query: { method: 'GET', isArray: true }
+                });
+
+                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'credits', resource);
             }
         }
-
     })
 ;
 

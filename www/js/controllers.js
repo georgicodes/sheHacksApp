@@ -110,5 +110,7 @@ angular.module('sheHacksApp.controllers', [])
     .controller('AboutController', function ($scope, CreditsService) {
         $scope.title = "About";
 
-        $scope.people = CreditsService.all();
+        CreditsService.getCredits().then(function (data) {
+            $scope.people = data;
+        })
     });
