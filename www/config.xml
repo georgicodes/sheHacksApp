@@ -7,10 +7,11 @@
     <author email="girlgeeksydney@gmail.com" href="http://girlgeeksydney.com">
         Girl Geek Sydney Team
     </author>
-    <content src="index.html" />
-    <access origin="*" />
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="false" />
-    <preference name="UIWebViewBounce" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
+    <content src="index.html"/>
+    <access origin="*"/>
+    <preference name="fullscreen" value="true"/>
+    <preference name="orientation" value="default"/>
+    <preference name="webviewbounce" value="false"/>
+    <preference name="UIWebViewBounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
 </widget>
