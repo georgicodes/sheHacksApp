@@ -3,10 +3,10 @@
     <!-- content area -->
     <content has-header="true" scroll="true">
         <h2 class="padding cursive-font">{{title}}</h2>
-
+        <!--<div class="padding">SheHacks is an event by Girl Geek Sydney.</div>-->
         <div class="list">
             <div ng-repeat="item in schedule" class="padding-bottom padding-top">
-                <div class="item item-divider text-center">
+                <div class="item item-divider">
                     <i class="ion-calendar venue-map-icon"></i> {{item.date}}
                 </div>
                 <div class="item item-text-wrap" ng-repeat="slot in item.program" ng-class="slot.colour">

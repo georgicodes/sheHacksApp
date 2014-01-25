@@ -22,11 +22,12 @@
     <!-- cordova script -->
     <script src="cordova.js"></script>
 
-    <!-- your app's script -->
+    <!-- app scripts -->
     <script src="js/app.js"></script>
     <script src="js/configuration.js"></script>
     <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
+
     <!-- angular add-on's -->
     <script src="js/lib/angular-custom-libs/angular-local-storage.js"></script>
     <script src="js/lib/angular-custom-libs/deferredUpdateService.js"></script>
@@ -37,7 +38,6 @@
 
 </head>
 
-<!-- 'sideMenuApp' is the name of this angular module (js/app.js)-->
 <body ng-app="sheHacksApp">
 
 <div ng-controller="MenuController">
@@ -47,7 +47,7 @@
         <pane side-menu-content nav-router>
             <header class="bar bar-header bar-royal">
                 <button class="button button-icon" ng-click="openLeft()"><i class="icon ion-navicon"></i></button>
-                <h1 class="title tech-font">She Hacks | Girl Geek Sydney</h1>
+                <h1 class="title"><span class="tech-font bold">She Hacks</span><span class="cursive-font">|Girl Geek Sydney</span></h1>
             </header>
             <!-- where the content of each page will be rendered -->
             <ng-view></ng-view>
@@ -56,7 +56,7 @@
         <!-- Left Side Menu -->
         <side-menu side="left">
             <header class="bar bar-header">
-                <h1 class="title royal tech-font">#shehacks</h1>
+                <h1 class="title royal tech-font bold">#SheHacks</h1>
             </header>
             <content has-header="true">
                 <ng-include src="'templates/menu.html'"></ng-include>

@@ -11,7 +11,8 @@
     bottom: 0;
 }
 .bar .title {
-    font-size: 14px;
+    font-size: 16px;
+    /*padding-left: 30px;*/
 }
 
 .credits-list {
@@ -20,6 +21,10 @@
 
 .no-margin-bottom{
     margin-bottom: 0px;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 @font-face {
