@@ -31,8 +31,8 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
                 {"title": "Coffee & Hacking", "time": "09:00"},
                 {"title": "Morning Tea", "time": "10:00"},
                 {"title": "Lunch", "time": "12:00"},
-                {"title": "Team Pitches", "time": "16:30"},
-                {"title": "Judging and Prizes", "time": "17:00"},
+                {"title": "Team Presentations", "time": "17:00"},
+                {"title": "Judging and Prizes", "time": "17:30"},
                 {"title": "Party Time @ nearby bar", "time": "18:00"}
             ]}
         ];
