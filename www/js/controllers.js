@@ -1,8 +1,9 @@
 angular.module('sheHacksApp.controllers', [])
 
     .controller('MenuController', function ($scope, Platform, MenuService) {
-        // "MenuService" is a service returning mock data (services.js)
-        $scope.list = MenuService.all();
+        MenuService.getMenu().then(function (data) {
+            $scope.list = data;
+        });
 
         $scope.openLeft = function () {
             $scope.sideMenuController.toggleLeft();

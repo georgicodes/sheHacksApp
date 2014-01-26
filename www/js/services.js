@@ -1,18 +1,13 @@
 angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateModule', 'ngResource', 'sheHacksApp.configuration'])
 
-    .factory('MenuService', function () {
-
-        var menuItems = [
-            { text: 'Program', iconClass: 'icon ion-clipboard', colour: "candy-pink-bg", link: '#/program'},
-            { text: 'Venue & Map', iconClass: 'icon ion-map', colour: "candy-purple-bg", link: '#/venue'},
-            { text: 'Prizes', iconClass: 'icon ion-icecream', colour: "candy-blue-bg", link: '#/prizes'},
-            { text: 'Sponsors', iconClass: 'icon ion-heart', colour: "candy-green-bg", link: '#/sponsors'},
-            { text: 'About', iconClass: 'icon ion-woman', colour: "candy-yellow-bg", link: '#/about'}
-        ];
-
+    .factory('MenuService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
         return {
-            all: function () {
-                return menuItems;
+            getMenu: function () {
+                var resource = $resource(API_END_POINT + '/menuItems', {
+                    query: { method: 'GET', isArray: true }
+                });
+
+                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'menuItems', resource);
             }
         }
     })
@@ -33,7 +28,7 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
                 {"title": "Lunch", "time": "12:00"},
                 {"title": "Team Presentations", "time": "17:00"},
                 {"title": "Judging and Prizes", "time": "17:30"},
-                {"title": "Party Time @ nearby bar", "time": "18:00"}
+                {"title": "Party Time @ Nearby Bar", "time": "18:00"}
             ]}
         ];
 
