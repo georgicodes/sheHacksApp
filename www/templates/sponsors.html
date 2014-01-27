@@ -5,7 +5,7 @@
 
         <h2 class="padding cursive-font">> {{title}} <</h2>
         <div class="list">
-            <div class="item item-thumbnail-left" ng-repeat="sponsor in sponsors">
+            <div class="item item-thumbnail-left notransition" ng-repeat="sponsor in sponsors">
                 <img ng-src="{{sponsor.src}}">
                 <h2>{{sponsor.name}}</h2>
                 <a ng-click="openLink(sponsor.link)">{{sponsor.link}}</a>

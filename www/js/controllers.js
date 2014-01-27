@@ -1,4 +1,4 @@
-angular.module('sheHacksApp.controllers', [])
+angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
     .controller('MenuController', function ($scope, Platform, MenuService) {
         $scope.list = MenuService.all();
@@ -88,12 +88,23 @@ angular.module('sheHacksApp.controllers', [])
         $scope.title = "Registration";
     })
 
-    .controller('SponsorsController', function ($scope, SponsorsService) {
+    .controller('SponsorsController', function ($scope, SponsorsService, localStorageService) {
         $scope.title = "Sponsors";
+        $scope.updateStatus = "Updating data...";
 
-        SponsorsService.getSponsors().then(function (data) {
-            $scope.sponsors = data;
-        });
+        $scope.sponsors =  getDataFromLocalStorage(localStorageService, "sponsors");
+        console.log("sponsors from local= "+JSON.stringify($scope.sponsors));
+
+        SponsorsService.query(function (updatedSponsors) {
+              //updateLocalStorage(localStorageService, "sponsors", updatedSponsors);
+                $scope.sponsors = updatedSponsors;
+                console.log("sponsors from service success = "+JSON.stringify(updatedSponsors));
+                $scope.updateStatus = "Data has been updated";
+            },
+            function (error) {
+                console.log("error occurred retrieving service data");
+                $scope.updateStatus = "Unable to retrieve latest data";
+            });
 
         // opens links in browser instead of on top of app
         $scope.openLink = function (link) {
@@ -134,3 +145,15 @@ function hasNetworkConnectivity() {
     console.log("navigator.onLine " + navigator.onLine);
     return navigator.onLine;
 }
+
+
+function getDataFromLocalStorage(localStorageService, storageName) {
+    var data = localStorageService.get(storageName);
+
+    return data;
+}
+
+function updateLocalStorage(localStorageService, storageName, data) {
+    localStorageService.add(storageName, data);
+}
+

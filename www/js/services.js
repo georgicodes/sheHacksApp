@@ -29,16 +29,10 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
         }
     })
 
-    .factory('SponsorsService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
-        return {
-            getSponsors: function () {
-                var resource = $resource(API_END_POINT + '/sponsors', {
-                    query: { method: 'GET', isArray: true }
-                });
-
-                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'sponsors', resource);
-            }
-        }
+    .factory('SponsorsService', function ($resource, API_END_POINT) {
+        return $resource(API_END_POINT + '/sponsors', {
+            query: { method: 'GET', isArray: true }
+        });
     })
 
     .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
