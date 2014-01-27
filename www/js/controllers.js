@@ -96,7 +96,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         console.log("sponsors from local= "+JSON.stringify($scope.sponsors));
 
         SponsorsService.query(function (updatedSponsors) {
-              //updateLocalStorage(localStorageService, "sponsors", updatedSponsors);
+                updateLocalStorage(localStorageService, "sponsors", updatedSponsors);
                 $scope.sponsors = updatedSponsors;
                 console.log("sponsors from service success = "+JSON.stringify(updatedSponsors));
                 $scope.updateStatus = "Data has been updated";
