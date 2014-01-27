@@ -17,32 +17,16 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
         }
     })
 
-    .factory('ProgramService', function () {
-        var programDays = [
-            {"date": "FRIDAY 21st MARCH, 2014", "program": [
-                {"title": "Guest Arrival & Registration", "time": "18:00"},
-                {"title": "Welcome & Lightening Talks", "time": "18:30"},
-                {"title": "Pitches & Group Formation", "time": "19:00"},
-                {"title": "Dinner", "time": "20:00"},
-                {"title": "Start Hacking", "time": "20:00"},
-                {"title": "Home Time", "time": "24:00"}
-            ]},
-            {"date": "SATURDAY 22nd MARCH, 2014", "program": [
-                {"title": "Coffee & Hacking", "time": "09:00"},
-                {"title": "Morning Tea", "time": "10:00"},
-                {"title": "Lunch", "time": "12:00"},
-                {"title": "Team Presentations", "time": "17:00"},
-                {"title": "Judging and Prizes", "time": "17:30"},
-                {"title": "Party Time @ nearby bar", "time": "18:00"}
-            ]}
-        ];
-
+    .factory('ProgramService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
         return {
-            all: function () {
-                return programDays;
+            getProgram: function () {
+                var resource = $resource(API_END_POINT + '/program', {
+                    query: { method: 'GET', isArray: true }
+                });
+
+                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'program', resource);
             }
         }
-
     })
 
     .factory('SponsorsService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {

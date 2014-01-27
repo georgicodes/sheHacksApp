@@ -105,7 +105,9 @@ angular.module('sheHacksApp.controllers', [])
     .controller('ProgramController', function ($scope, ProgramService) {
         $scope.title = "Program";
 
-        $scope.schedule = ProgramService.all();
+        ProgramService.getProgram().then(function (data) {
+            $scope.schedule = data;
+        });
     })
 
     .controller('PrizesController', function ($scope, PrizesService) {
