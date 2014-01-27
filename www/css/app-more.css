@@ -12,7 +12,13 @@
 }
 .bar .title {
     font-size: 16px;
-    /*padding-left: 30px;*/
+}
+
+.small-text {
+    font-size: 12px;
+}
+.small-line-height {
+    line-height: 26px;
 }
 
 .credits-list {

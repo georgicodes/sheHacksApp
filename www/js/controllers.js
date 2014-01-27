@@ -1,8 +1,11 @@
 angular.module('sheHacksApp.controllers', [])
 
     .controller('MenuController', function ($scope, Platform, MenuService) {
-        // "MenuService" is a service returning mock data (services.js)
         $scope.list = MenuService.all();
+
+        $scope.$on('$viewContentLoaded', function () {
+            $scope.noNetwork = !hasNetworkConnectivity();
+        });
 
         $scope.openLeft = function () {
             $scope.sideMenuController.toggleLeft();
@@ -26,11 +29,11 @@ angular.module('sheHacksApp.controllers', [])
         <!-- there were issues calling google.maps.event.addDomListener(window, 'load', initialize); so I am using this way of calling init instead -->
         $scope.$on('$viewContentLoaded', function () {
             // We need to check for connection status before attempting to connect to the google maps API otherwise bad things happen
-            if (getConnectionStatus() == 'online'){
+            if (hasNetworkConnectivity()) {
                 init();
             } else {
                 $scope.noNetwork = true;
-                console.log("no network detected, cannot initialize map")
+                console.log("No network detected, cannot initialize map")
             }
         });
 
@@ -67,7 +70,6 @@ angular.module('sheHacksApp.controllers', [])
             $scope.map = map;
             infowindow.open(map, marker);
         };
-
 
         $scope.centerOnMe = function () {
             if (!$scope.map) {
@@ -121,7 +123,13 @@ angular.module('sheHacksApp.controllers', [])
         })
     });
 
-// HTML5 way of determining online/offline status
-function getConnectionStatus() {
-    return navigator.onLine ? 'online' : 'offline';
+// TODO: FIX THIS :'(
+// Unfortunately navigator.onLine is not implemented properly in many browsers. So basically it lies to you...
+// I have tested it on iOS and it still returns TRUE for airplane mode.
+// The PhoneGap APIs navigator.connection.type is also faulty for airplane mode (returns "cellular")
+// So it seems there is no great way of detecting no network access and this solution doesn't work for me on airplane mode still...
+function hasNetworkConnectivity() {
+    console.log("navigator.onLine " + navigator.onLine);
+    console.log("navigator.connection.type " + navigator.connection.type);
+    return navigator.onLine;
 }
