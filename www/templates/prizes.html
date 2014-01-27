@@ -3,15 +3,17 @@
     <!-- content area -->
     <content has-header="true" scroll="true">
 
-        <h2 class="padding cursive-font">{{title}}</h2>
+        <h2 class="padding cursive-font">> {{title}} <</h2>
 
         <div class="list">
             <div class="item item-icon-left" ng-repeat="prize in prizes">
-                <i class="icon ion-icecream"></i>
+                <i class="icon ion-star candy-blue"></i>
                 <h2>{{prize.name}}</h2>
                 <p>{{prize.desc}}</p>
             </div>
         </div>
+
+        <!--<img src="img/trophy.jpeg"/>-->
 
     </content>
 

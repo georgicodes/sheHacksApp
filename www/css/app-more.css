@@ -33,6 +33,23 @@
     font-weight: bold;
 }
 
+.gold {
+    color: #D4A017;
+}
+
+.italic{
+    font-style: italic;
+}
+.float-left {
+    float:left;
+}
+.float-right {
+    float: right;
+}
+.program-image {
+    width: 30%;
+}
+
 @font-face {
     font-family: 'Share Tech Mono';
     font-style: normal;

@@ -2,9 +2,9 @@
 
     <!-- content area -->
     <content has-header="true" has-footer="false" scroll="false">
-        <h2 class="padding cursive-font">{{title}}</h2>
+        <h2 class="padding cursive-font">> {{title}} <</h2>
 
-        <div ng-show="noNetwork">Please connect to a network to view venue map.</div>
+        <div ng-show="noNetwork" class="padding">Please connect to a network to view venue map.</div>
         <div ng-hide="noNetwork" id="map-canvas"></div>
 
         <div class="list no-margin-bottom">
@@ -15,11 +15,8 @@
             <label class="item item-input candy-purple-bg">
                 <div class="item item-icon-left venue-icon-item venue-marker-item"><i
                         class="ion-location venue-marker-icon"></i></div>
-                <span class="item-text-wrap">Level 5, Google Sydney, Pyrmont 2009</span>
+                <span class="item-text-wrap">Google - Wharf 7<br>Level TBD, 58 Pirrama Road Pyrmont</span>
             </label>
-        </div>
-        <div class="text-center">
-            <a onclick="window.open('http://she-hacks.eventbrite.com.au/', '_system')"><img src="img/eventbrite_logo.png" class="eventbrite"></a>
         </div>
     </content>
 
