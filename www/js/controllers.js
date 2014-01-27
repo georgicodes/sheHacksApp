@@ -58,7 +58,7 @@ angular.module('sheHacksApp.controllers', [])
             });
 
             var infowindow = new google.maps.InfoWindow({
-                content: "<p style='height: 40px'>Level 5, Google Sydney</p>"
+                content: "<p style='height: 40px'>Google Sydney</p>"
             });
 
             // Stop the side bar from dragging when mousedown/tapdown on the map
@@ -68,7 +68,7 @@ angular.module('sheHacksApp.controllers', [])
             });
 
             $scope.map = map;
-            infowindow.open(map, marker);
+//            infowindow.open(map, marker);
         };
 
         $scope.centerOnMe = function () {
