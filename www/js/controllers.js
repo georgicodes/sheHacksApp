@@ -132,6 +132,5 @@ angular.module('sheHacksApp.controllers', [])
 // So it seems there is no great way of detecting no network access and this solution doesn't work for me on airplane mode still...
 function hasNetworkConnectivity() {
     console.log("navigator.onLine " + navigator.onLine);
-    console.log("navigator.connection.type " + navigator.connection.type);
     return navigator.onLine;
 }
