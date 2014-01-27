@@ -33,10 +33,6 @@
     font-weight: bold;
 }
 
-.gold {
-    color: #D4A017;
-}
-
 .italic{
     font-style: italic;
 }
@@ -49,6 +45,10 @@
 .program-image {
     width: 30%;
 }
+.venue-item {
+    font-size: 14px;
+}
+
 
 @font-face {
     font-family: 'Share Tech Mono';

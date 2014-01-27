@@ -6612,8 +6612,10 @@ a.button {
   font-family: "Lobster", Georgia, "Times New Roman", Times, serif; }
 
 .item-divider {
-  background-color: #f39dd4;
-  color: #444444; }
+  background-color: white;
+  color: #660099;
+  border-color: #660099;
+  border-width: 2px 0px 3px 0px; }
 
 .item h2 {
   color: #660099; }
@@ -6641,3 +6643,6 @@ h2 {
 a {
   text-decoration: underline;
   color: #f39dd4; }
+
+.program-alternate-row {
+  background-color: #dbbae5; }

@@ -13,8 +13,10 @@
 }
 
 .item-divider {
-  background-color: $candy-pink;
-  color: $dark;
+  background-color: $light;
+  color: $royal;
+  border-color: $royal;
+  border-width: 2px 0px 3px 0px;
 }
 
 .item h2 {
@@ -51,4 +53,7 @@ h2 {
 a {
   text-decoration: underline;
   color: $candy-pink;
+}
+.program-alternate-row {
+  background-color: $candy-purple;
 }

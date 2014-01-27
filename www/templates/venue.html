@@ -7,16 +7,15 @@
         <div ng-show="noNetwork" class="padding">Please connect to a network to view venue map.</div>
         <div ng-hide="noNetwork" id="map-canvas"></div>
 
-        <div class="list no-margin-bottom">
-            <label class="item item-input candy-purple-bg">
-                <div class="item item-icon-left venue-icon-item"><i class="ion-calendar venue-map-icon"></i></div>
-                <span class="item-text-wrap"><b>6pm - 12pm</b> on Fri 21st <br><b>9am - 6pm</b> on Sat 22nd</span>
-            </label>
-            <label class="item item-input candy-purple-bg">
-                <div class="item item-icon-left venue-icon-item venue-marker-item"><i
-                        class="ion-location venue-marker-icon"></i></div>
-                <span class="item-text-wrap">Google - Wharf 7<br>Level TBD, 58 Pirrama Road Pyrmont</span>
-            </label>
+        <div class="list">
+            <div class="item item-icon-left candy-purple-bg venue-item">
+                <i class="icon ion-calendar"></i>
+                <b>6pm - 12pm</b> on Fri 21st <br><b>9am - 6pm</b> on Sat 22nd
+            </div>
+            <div class="item item-icon-left candy-purple-bg venue-item">
+                <i class="icon ion-location"></i>
+                <b>Google - Wharf 7</b><br>Level TBD, 58 Pirrama Road Pyrmont
+            </div>
         </div>
     </content>
 
