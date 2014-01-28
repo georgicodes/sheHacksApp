@@ -81,7 +81,7 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'ngResource', 'she
                     query: { method: 'GET', isArray: true }
                 });
 
-                return queryAndUpdateLocalStorage(localStorageService, 'events', resource,  $q, $rootScope);
+                return queryAndUpdateLocalStorage(localStorageService, 'events', resource, $q, $rootScope);
             }
         }
     })
