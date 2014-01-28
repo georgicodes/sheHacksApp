@@ -65,7 +65,7 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'ngResource', 'she
         }
     })
 
-    .factory('EventsService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
+    .factory('EventsService', function ($resource, API_END_POINT, localStorageService, $q, $rootScope) {
         return {
 //            getSheHacksEvent: function () {
 //                var resource = $resource(API_END_POINT + '/events:EventId', {
@@ -81,7 +81,7 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'ngResource', 'she
                     query: { method: 'GET', isArray: true }
                 });
 
-                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'events', resource);
+                return queryAndUpdateLocalStorage(localStorageService, 'events', resource, $q, $rootScope);
             }
         }
     })
