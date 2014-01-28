@@ -1,4 +1,4 @@
-angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateModule', 'ngResource', 'sheHacksApp.configuration'])
+angular.module('sheHacksApp.services', ['LocalStorageModule', 'ngResource', 'sheHacksApp.configuration'])
 
     .factory('MenuService', function () {
 
@@ -17,67 +17,71 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'DeferredUpdateMod
         }
     })
 
-    .factory('ProgramService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
+    .factory('ProgramService', function ($resource, API_END_POINT, localStorageService, $q, $rootScope) {
         return {
             getProgram: function () {
                 var resource = $resource(API_END_POINT + '/program', {
                     query: { method: 'GET', isArray: true }
                 });
 
-                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'program', resource);
+                return queryAndUpdateLocalStorage(localStorageService, 'program', resource, $q, $rootScope);
             }
         }
     })
 
-    .factory('SponsorsService', function ($resource, API_END_POINT) {
-        return $resource(API_END_POINT + '/sponsors', {
-            query: { method: 'GET', isArray: true }
-        });
+    .factory('SponsorsService', function ($resource, API_END_POINT, localStorageService, $q, $rootScope) {
+        return {
+            getSponsors: function() {
+                var resource = $resource(API_END_POINT + '/sponsors', {
+                    query: { method: 'GET', isArray: true }
+                });
+
+                return queryAndUpdateLocalStorage(localStorageService, 'sponsors', resource, $q, $rootScope);
+            }
+        }
     })
 
-    .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
+    .factory('PrizesService', function ($resource, API_END_POINT, localStorageService, $q, $rootScope) {
         return {
             getPrizes: function () {
                 var resource = $resource(API_END_POINT + '/prizes', {
                     query: { method: 'GET', isArray: true }
                 });
 
-                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'prizes', resource);
+                return queryAndUpdateLocalStorage(localStorageService, 'prizes', resource, $q, $rootScope);
             }
         }
     })
 
-    .factory('CreditsService', function ($resource, API_END_POINT, localStorageService, deferredUpdateService) {
+    .factory('CreditsService', function ($resource, API_END_POINT, localStorageService, $q, $rootScope) {
         return {
             getCredits: function () {
                 var resource = $resource(API_END_POINT + '/credits', {
                     query: { method: 'GET', isArray: true }
                 });
 
-                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'credits', resource);
+                return queryAndUpdateLocalStorage(localStorageService, 'credits', resource, $q, $rootScope);
             }
         }
     })
 ;
 
-function queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, storageName, resource) {
-    // here we always query the RESTful service, but if we already have values in
-    // storage they are displayed first, then the storage is updated when the RESTful request returns
-    var deferred, promise;
-    deferred = deferredUpdateService.defer();
-    promise = deferred.promise;
 
-    resource.query(function (response) {
-        console.log("querying REST resource")
-        localStorageService.add(storageName, response);
-        deferred.resolve(response);
+function queryAndUpdateLocalStorage(localStorageService, storageName, resource, $q, $rootScope) {
+    var deferred = $q.defer();
+    setTimeout(function() {
+
+        $rootScope.$apply(function() {
+            var response = localStorageService.get(storageName);
+            deferred.notify(response);
+
+            resource.query(function (success) {
+                localStorageService.add(storageName, success);
+                deferred.resolve(success);
+            }, function(error) {
+                deferred.reject(error);
+            });
+        });
     });
-
-    var response = localStorageService.get(storageName);
-    if (response != undefined) {
-        console.log("querying storage")
-        deferred.resolve(response);
-    }
-
-    return promise;
+    return deferred.promise;
 }

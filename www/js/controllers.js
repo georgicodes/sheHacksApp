@@ -88,37 +88,56 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         $scope.title = "Registration";
     })
 
-    .controller('SponsorsController', function ($scope, SponsorsService, localStorageService) {
+    .controller('SponsorsController', function ($scope, SponsorsService) {
         $scope.title = "Sponsors";
-        $scope.updateStatus = "Updating data...";
 
-        $scope.sponsors =  getDataFromLocalStorage(localStorageService, "sponsors");
-        console.log("sponsors from local= "+JSON.stringify($scope.sponsors));
+        SponsorsService.getSponsors().then(function(success) {
+            $scope.sponsors = success;
+        }, function(error) {
+            console.log("error: "+error);
+            $scope.updateStatus = "Unable to retrieve latest data";
+        }, function(update) {
+            $scope.sponsors = update;
+        }) ;
 
-        SponsorsService.query(function (updatedSponsors) {
-                updateLocalStorage(localStorageService, "sponsors", updatedSponsors);
-                $scope.sponsors = updatedSponsors;
-                console.log("sponsors from service success = "+JSON.stringify(updatedSponsors));
-                $scope.updateStatus = "Data has been updated";
-            },
-            function (error) {
-                console.log("error occurred retrieving service data");
-                $scope.updateStatus = "Unable to retrieve latest data";
-            });
 
         // opens links in browser instead of on top of app
         $scope.openLink = function (link) {
             console.log(link);
             window.open('http://' + link, '_system');
-        }
+        };
+
+        $scope.onRefresh = function() {
+            $scope.updateStatus = "Updating data...";
+            console.log("in refresh");
+            SponsorsService.getSponsors().then(function(success) {
+                $scope.sponsors = success;
+                $scope.updateStatus = "Data updated";
+            });
+            $scope.$broadcast('scroll.refreshComplete');
+        };
     })
 
     .controller('ProgramController', function ($scope, ProgramService) {
         $scope.title = "Program";
 
-        ProgramService.getProgram().then(function (data) {
-            $scope.schedule = data;
+        ProgramService.getProgram().then(function (success) {
+            $scope.schedule = success;
+        }, function(error) {
+            $scope.updateStatus = "Unable to retrieve latest data";
+        }, function(update) {
+            $scope.schedule = update;
         });
+
+        $scope.onRefresh = function() {
+            $scope.updateStatus = "Updating data...";
+            console.log("in refresh");
+            ProgramService.getProgram().then(function(success) {
+                $scope.schedule = success;
+                $scope.updateStatus = "Data updated";
+            });
+            $scope.$broadcast('scroll.refreshComplete');
+        };
     })
 
     .controller('PrizesController', function ($scope, PrizesService) {
@@ -145,15 +164,3 @@ function hasNetworkConnectivity() {
     console.log("navigator.onLine " + navigator.onLine);
     return navigator.onLine;
 }
-
-
-function getDataFromLocalStorage(localStorageService, storageName) {
-    var data = localStorageService.get(storageName);
-
-    return data;
-}
-
-function updateLocalStorage(localStorageService, storageName, data) {
-    localStorageService.add(storageName, data);
-}
-

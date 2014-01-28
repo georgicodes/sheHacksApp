@@ -1,8 +1,9 @@
 <nav-page id="sponsors">
 
     <!-- content area -->
-    <content has-header="true" scroll="true">
+    <content has-header="true" scroll="true" on-refresh="onRefresh()">
 
+        <refresher></refresher>
         <h2 class="padding cursive-font">> {{title}} <</h2>
         <div class="list">
             <div class="item item-thumbnail-left notransition" ng-repeat="sponsor in sponsors">
@@ -12,7 +13,6 @@
             </div>
         </div>
         <h4 class="padding text-center tech-font">Thank You!</h4>
-
     </content>
 
 </nav-page>
