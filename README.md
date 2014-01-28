@@ -33,5 +33,27 @@ See app_assets folder for PSDs
 
 Websites: http://ticons.fokkezb.nl/
 
+## Grunt
 
+Install grunt first. [More Info](http://gruntjs.com/getting-started)
+```
+$ npm install -g grunt-cli
+```
+
+### Install Grunt Plugins
+
+The --save-dev part updates package.json
+
+```
+$ npm install grunt-contrib-cssmin --save-dev
+```
+
+### Running Grunt
+From base dir:
+
+```
+$ grunt cssmin 
+```
+
+This will minify the css in the /www/css dir
 
