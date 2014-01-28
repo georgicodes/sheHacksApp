@@ -115,7 +115,6 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
         $scope.onRefresh = function() {
             $scope.updateStatus = "Updating data...";
-            console.log("in refresh");
             SponsorsService.getSponsors().then(function(success) {
                 $scope.sponsors = success;
                 $scope.updateStatus = "Data updated";
@@ -136,11 +135,8 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         });
 
         $scope.onRefresh = function() {
-            $scope.updateStatus = "Updating data...";
-            console.log("in refresh");
             ProgramService.getProgram().then(function(success) {
                 $scope.schedule = success;
-                $scope.updateStatus = "Data updated";
             });
             $scope.$broadcast('scroll.refreshComplete');
         };
@@ -151,6 +147,14 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         PrizesService.getPrizes().then(function (data) {
             $scope.prizes = data;
         });
+
+        $scope.onRefresh = function() {
+            PrizesService.getPrizes().then(function(success) {
+                $scope.prizes = success;
+            });
+            $scope.$broadcast('scroll.refreshComplete');
+        };
+
     })
 
     .controller('AboutController', function ($scope, CreditsService) {
@@ -158,7 +162,14 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
         CreditsService.getCredits().then(function (data) {
             $scope.people = data;
-        })
+        });
+
+        $scope.onRefresh = function() {
+            CreditsService.getCredits().then(function(success) {
+                $scope.people = success;
+            });
+            $scope.$broadcast('scroll.refreshComplete');
+        };
     });
 
 // TODO: FIX THIS :'(
