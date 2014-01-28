@@ -22,9 +22,15 @@ angular.module('sheHacksApp.controllers', [])
 
     })
 
-    .controller('VenueController', function ($scope) {
+    .controller('VenueController', function ($scope, EventsService) {
         $scope.title = "Venue & Map";
         $scope.noNetwork = false;
+
+        EventsService.getEvents().then(function (data) {
+            $scope.event = data[0];
+            $scope.firstDay = $scope.event.eventDays[0];
+            $scope.secondDay = $scope.event.eventDays[1];
+        });
 
         <!-- there were issues calling google.maps.event.addDomListener(window, 'load', initialize); so I am using this way of calling init instead -->
         $scope.$on('$viewContentLoaded', function () {

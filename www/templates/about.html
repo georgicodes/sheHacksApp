@@ -5,7 +5,7 @@
         <h2 class="page-title padding">> {{title}} <</h2>
         <p class="padding text-center">She Hacks is an event by <span class="royal">Girl Geek Sydney</span>.
             We would like to thank our sponsors and GGD Syd volunteers for helping to organise this event.</p>
-        <ul class="list text-center credits-list" ng-repeat="person in people">
+        <ul class="list text-center credits-list" ng-repeat="person in people | orderBy:'order'">
             <h4 class="tech-font royal" style=""><b>{{person.name}}</b></h4><span class="italic">{{person.desc}}</span>
         </ul>
 

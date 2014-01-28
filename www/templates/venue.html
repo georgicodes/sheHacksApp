@@ -3,18 +3,18 @@
     <!-- content area -->
     <content has-header="true" has-footer="false" scroll="false">
         <h2 class="padding cursive-font">> {{title}} <</h2>
-
         <div ng-show="noNetwork" class="padding">Please connect to a network to view venue map.</div>
         <div ng-hide="noNetwork" id="map-canvas"></div>
 
         <div class="list">
             <div class="item item-icon-left candy-purple-bg venue-item">
                 <i class="icon ion-calendar"></i>
-                <b>6pm - 12pm</b> on Fri 21st <br><b>9am - 6pm</b> on Sat 22nd
+                <b>{{firstDay.startTime|date:'h a'}} - {{firstDay.endTime|date:'h a'}}</b> on {{firstDay.eventDate|date:'EEE d MMMM'}}<br>
+                <b>{{secondDay.startTime|date:'h a'}} - {{secondDay.endTime|date:'h a'}}</b> on {{secondDay.eventDate|date:'EEE d MMMM'}}
             </div>
             <div class="item item-icon-left candy-purple-bg venue-item">
                 <i class="icon ion-location"></i>
-                <b>Google - Wharf 7</b><br>Level TBD, 58 Pirrama Road Pyrmont
+                <b>{{event.address.addressLine1}}</b><br>{{event.address.addressLine2}}
             </div>
         </div>
     </content>
