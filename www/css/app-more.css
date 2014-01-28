@@ -69,4 +69,13 @@
     src: local('Lobster'), url(../fonts/Lobster.woff) format('woff');
 }
 
+.notransition {
+     -webkit-transition: none !important;
+     -moz-transition: none !important;
+     -o-transition: none !important;
+     -ms-transition: none !important;
+     transition: none !important;
+ }
+
+
 
