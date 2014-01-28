@@ -49,6 +49,14 @@
     font-size: 14px;
 }
 
+.no-access-footer {
+    width: 100%;
+}
+
+.no-access-msg {
+    margin: auto;
+}
+
 
 @font-face {
     font-family: 'Share Tech Mono';
