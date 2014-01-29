@@ -26,8 +26,15 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         $scope.title = "Venue & Map";
         $scope.noNetwork = false;
 
-        EventsService.getEvents().then(function (data) {
-            $scope.event = data[0];
+        EventsService.getEvents().then(function (success) {
+            $scope.event = success[0];
+            $scope.firstDay = $scope.event.eventDays[0];
+            $scope.secondDay = $scope.event.eventDays[1];
+        }, function (error) {
+            console.log("error: " + error);
+            $scope.updateStatus = "Unable to retrieve latest data";
+        }, function (update) {
+            $scope.event = update[0];
             $scope.firstDay = $scope.event.eventDays[0];
             $scope.secondDay = $scope.event.eventDays[1];
         });
@@ -77,35 +84,19 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 //            infowindow.open(map, marker);
         };
 
-        $scope.centerOnMe = function () {
-            if (!$scope.map) {
-                console.log("cannot find map")
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(function (pos) {
-                $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            });
-        };
-
-    })
-
-    .controller('RegistrationController', function ($scope, SponsorsService) {
-        $scope.title = "Registration";
     })
 
     .controller('SponsorsController', function ($scope, SponsorsService) {
         $scope.title = "Sponsors";
 
-        SponsorsService.getSponsors().then(function(success) {
+        SponsorsService.getSponsors().then(function (success) {
             $scope.sponsors = success;
-        }, function(error) {
-            console.log("error: "+error);
+        }, function (error) {
+            console.log("error: " + error);
             $scope.updateStatus = "Unable to retrieve latest data";
-        }, function(update) {
+        }, function (update) {
             $scope.sponsors = update;
-        }) ;
-
+        });
 
         // opens links in browser instead of on top of app
         $scope.openLink = function (link) {
@@ -113,9 +104,9 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             window.open('http://' + link, '_system');
         };
 
-        $scope.onRefresh = function() {
+        $scope.onRefresh = function () {
             $scope.updateStatus = "Updating data...";
-            SponsorsService.getSponsors().then(function(success) {
+            SponsorsService.getSponsors().then(function (success) {
                 $scope.sponsors = success;
                 $scope.updateStatus = "Data updated";
             });
@@ -128,14 +119,14 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
         ProgramService.getProgram().then(function (success) {
             $scope.schedule = success;
-        }, function(error) {
+        }, function (error) {
             $scope.updateStatus = "Unable to retrieve latest data";
-        }, function(update) {
+        }, function (update) {
             $scope.schedule = update;
         });
 
-        $scope.onRefresh = function() {
-            ProgramService.getProgram().then(function(success) {
+        $scope.onRefresh = function () {
+            ProgramService.getProgram().then(function (success) {
                 $scope.schedule = success;
             });
             $scope.$broadcast('scroll.refreshComplete');
@@ -146,14 +137,14 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         $scope.title = "Prize Categories";
         PrizesService.getPrizes().then(function (data) {
             $scope.prizes = data;
-        }, function(error) {
+        }, function (error) {
             $scope.updateStatus = "Unable to retrieve latest data";
-        }, function(update) {
+        }, function (update) {
             $scope.prizes = update;
         });
 
-        $scope.onRefresh = function() {
-            PrizesService.getPrizes().then(function(success) {
+        $scope.onRefresh = function () {
+            PrizesService.getPrizes().then(function (success) {
                 $scope.prizes = success;
             });
             $scope.$broadcast('scroll.refreshComplete');
@@ -166,14 +157,14 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
         CreditsService.getCredits().then(function (data) {
             $scope.people = data;
-        }, function(error) {
+        }, function (error) {
             $scope.updateStatus = "Unable to retrieve latest data";
-        }, function(update) {
+        }, function (update) {
             $scope.people = update;
         });
 
-        $scope.onRefresh = function() {
-            CreditsService.getCredits().then(function(success) {
+        $scope.onRefresh = function () {
+            CreditsService.getCredits().then(function (success) {
                 $scope.people = success;
             });
             $scope.$broadcast('scroll.refreshComplete');
