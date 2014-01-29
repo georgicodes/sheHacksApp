@@ -146,6 +146,10 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         $scope.title = "Prize Categories";
         PrizesService.getPrizes().then(function (data) {
             $scope.prizes = data;
+        }, function(error) {
+            $scope.updateStatus = "Unable to retrieve latest data";
+        }, function(update) {
+            $scope.prizes = update;
         });
 
         $scope.onRefresh = function() {
@@ -162,6 +166,10 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
         CreditsService.getCredits().then(function (data) {
             $scope.people = data;
+        }, function(error) {
+            $scope.updateStatus = "Unable to retrieve latest data";
+        }, function(update) {
+            $scope.people = update;
         });
 
         $scope.onRefresh = function() {
