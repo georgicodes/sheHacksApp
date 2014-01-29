@@ -104,14 +104,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             window.open('http://' + link, '_system');
         };
 
-        $scope.onRefresh = function () {
-            $scope.updateStatus = "Updating data...";
-            SponsorsService.getSponsors().then(function (success) {
-                $scope.sponsors = success;
-                $scope.updateStatus = "Data updated";
-            });
-            $scope.$broadcast('scroll.refreshComplete');
-        };
+        $scope.onRefresh = refreshPageContent(SponsorsService.getSponsors(), $scope, "sponsors");
     })
 
     .controller('ProgramController', function ($scope, ProgramService) {
@@ -125,12 +118,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             $scope.schedule = update;
         });
 
-        $scope.onRefresh = function () {
-            ProgramService.getProgram().then(function (success) {
-                $scope.schedule = success;
-            });
-            $scope.$broadcast('scroll.refreshComplete');
-        };
+        $scope.onRefresh = refreshPageContent(ProgramService.getProgram(), $scope, "schedule");
     })
 
     .controller('PrizesController', function ($scope, PrizesService) {
@@ -143,12 +131,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             $scope.prizes = update;
         });
 
-        $scope.onRefresh = function () {
-            PrizesService.getPrizes().then(function (success) {
-                $scope.prizes = success;
-            });
-            $scope.$broadcast('scroll.refreshComplete');
-        };
+        $scope.onRefresh = refreshPageContent(PrizesService.getPrizes(), $scope, "prizes");
 
     })
 
@@ -163,13 +146,18 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             $scope.people = update;
         });
 
-        $scope.onRefresh = function () {
-            CreditsService.getCredits().then(function (success) {
-                $scope.people = success;
-            });
-            $scope.$broadcast('scroll.refreshComplete');
-        };
+        $scope.onRefresh = refreshPageContent(CreditsService.getCredits(), $scope, "people");
     });
+
+function refreshPageContent(promise, $scope, collectionName) {
+    return function() {
+        console.log("in refresh page content") ;
+        promise.then(function(success) {
+            $scope[collectionName] = success;
+        });
+        $scope.$broadcast('scroll.refreshComplete');
+    };
+}
 
 // TODO: FIX THIS :'(
 // Unfortunately navigator.onLine is not implemented properly in many browsers. So basically it lies to you...
