@@ -104,7 +104,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             window.open('http://' + link, '_system');
         };
 
-        $scope.onRefresh = refreshPageContent(SponsorsService.getSponsors(), $scope, "sponsors");
+        $scope.onRefresh = refreshPageContent(SponsorsService.getSponsors, $scope, "sponsors");
     })
 
     .controller('ProgramController', function ($scope, ProgramService) {
@@ -118,7 +118,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             $scope.schedule = update;
         });
 
-        $scope.onRefresh = refreshPageContent(ProgramService.getProgram(), $scope, "schedule");
+        $scope.onRefresh = refreshPageContent(ProgramService.getProgram, $scope, "schedule");
     })
 
     .controller('PrizesController', function ($scope, PrizesService) {
@@ -131,7 +131,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             $scope.prizes = update;
         });
 
-        $scope.onRefresh = refreshPageContent(PrizesService.getPrizes(), $scope, "prizes");
+        $scope.onRefresh = refreshPageContent(PrizesService.getPrizes, $scope, "prizes");
 
     })
 
@@ -146,13 +146,13 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             $scope.people = update;
         });
 
-        $scope.onRefresh = refreshPageContent(CreditsService.getCredits(), $scope, "people");
+        $scope.onRefresh = refreshPageContent(CreditsService.getCredits, $scope, "people");
     });
 
 function refreshPageContent(promise, $scope, collectionName) {
     return function() {
         console.log("in refresh page content") ;
-        promise.then(function(success) {
+        promise().then(function(success) {
             $scope[collectionName] = success;
         });
         $scope.$broadcast('scroll.refreshComplete');
