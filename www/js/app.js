@@ -2,7 +2,7 @@ var sideMenuApp = angular.module('sheHacksApp', ['ionic', 'ngRoute', 'sheHacksAp
 
 sideMenuApp.config(function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
-})
+});
 
 sideMenuApp.config(['$routeProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -32,3 +32,24 @@ sideMenuApp.config(['$routeProvider', function ($routeProvider, $locationProvide
         })
         .otherwise({ redirectTo: '/program' });
 }]);
+
+sideMenuApp.run(function($rootScope) {
+
+    document.addEventListener("online", onOnline, false);
+    document.addEventListener("offline", onOffline, false);
+
+    function onOnline() {
+        console.log("just received an online event");
+        $rootScope.$apply(function() {
+            $rootScope.noNetwork = false;
+        });
+    }
+
+    function onOffline() {
+        console.log("just received an offline event");
+        $rootScope.$apply(function() {
+            $rootScope.noNetwork = true;
+        });
+    }
+
+});

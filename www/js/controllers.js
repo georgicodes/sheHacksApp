@@ -1,10 +1,10 @@
 angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
-    .controller('MenuController', function ($scope, Platform, MenuService) {
+    .controller('MenuController', function ($scope, $rootScope, Platform, MenuService) {
         $scope.list = MenuService.all();
 
         $scope.$on('$viewContentLoaded', function () {
-            $scope.noNetwork = !hasNetworkConnectivity();
+            $rootScope.noNetwork = !hasNetworkConnectivity();
         });
 
         $scope.openLeft = function () {
@@ -22,9 +22,9 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
     })
 
-    .controller('VenueController', function ($scope, EventsService) {
+    .controller('VenueController', function ($scope, $rootScope, EventsService) {
         $scope.title = "Venue & Map";
-        $scope.noNetwork = false;
+        $rootScope.noNetwork = false;
 
         EventsService.getEvents().then(function (success) {
             $scope.event = success[0];
@@ -45,7 +45,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             if (hasNetworkConnectivity()) {
                 init();
             } else {
-                $scope.noNetwork = true;
+                $rootScope.noNetwork = true;
                 console.log("No network detected, cannot initialize map")
             }
         });
@@ -159,11 +159,7 @@ function refreshPageContent(promise, $scope, collectionName) {
     };
 }
 
-// TODO: FIX THIS :'(
-// Unfortunately navigator.onLine is not implemented properly in many browsers. So basically it lies to you...
-// I have tested it on iOS and it still returns TRUE for airplane mode.
-// The PhoneGap APIs navigator.connection.type is also faulty for airplane mode (returns "cellular")
-// So it seems there is no great way of detecting no network access and this solution doesn't work for me on airplane mode still...
+//Think we're all good now. Have added the cordova network plugin
 function hasNetworkConnectivity() {
     console.log("navigator.onLine " + navigator.onLine);
     return navigator.onLine;

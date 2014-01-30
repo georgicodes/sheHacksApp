@@ -23,6 +23,7 @@ Install the following plugins in your local dev environment. You will need Cordo
 $ phonegap local plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git
 $ cordova plugin add org.apache.cordova.inappbrowser
 $ cordova plugin add org.apache.cordova.statusbar
+$ cordova plugin add org.apache.cordova.network-information
 ```
 ## Getting icons into IOS
 Copy `app_asset/icons` and `app_assets/splash` to the `platforms/ios/Resource/` directory. Replace whats in `icons` and `splah`. 
