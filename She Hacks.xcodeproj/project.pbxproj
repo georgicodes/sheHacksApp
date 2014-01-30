@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		0A032C0567404FF0967DFD93 /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6041096FED2341D4A739B9E8 /* CDVConnection.m */; };
 		1C51494BB8144FE19312B662 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B298F32A3C364B84B864C245 /* CDVStatusBar.m */; };
@@ -507,7 +508,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "She Hacks/She Hacks-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -541,7 +542,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "She Hacks/She Hacks-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
