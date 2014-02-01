@@ -26,7 +26,7 @@ $ cordova plugin add org.apache.cordova.statusbar
 $ cordova plugin add org.apache.cordova.network-information
 ```
 ## Getting icons into IOS
-Copy `app_asset/icons` and `app_assets/splash` to the `platforms/ios/Resource/` directory. Replace whats in `icons` and `splah`. 
+Copy `app_asset/icons` and `app_assets/splash` to the `platforms/ios/Resource/` directory. Replace what's in `icons` and `splash`. 
 Then remove app from phone, select Program > Clean from XCode and then deploy to phone.
 
 ## Icon & SplashScreen Generation
