@@ -3,10 +3,6 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
     .controller('MenuController', function ($scope, $rootScope, Platform, MenuService) {
         $scope.list = MenuService.all();
 
-        $scope.$on('$viewContentLoaded', function () {
-            $rootScope.noNetwork = !hasNetworkConnectivity();
-        });
-
         $scope.openLeft = function () {
             $scope.sideMenuController.toggleLeft();
         };
@@ -17,14 +13,17 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
         Platform.ready(function () {
             // hide the status bar using the StatusBar plugin
-            StatusBar.hide();
+            try {
+                StatusBar.hide();
+            } catch (e) {
+                console.log("Cannot find StatusBar")
+            }
         });
 
     })
 
     .controller('VenueController', function ($scope, $rootScope, EventsService) {
         $scope.title = "Venue & Map";
-        $rootScope.noNetwork = false;
 
         EventsService.getEvents().then(function (success) {
             $scope.event = success[0];
@@ -39,20 +38,27 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             $scope.secondDay = $scope.event.eventDays[1];
         });
 
-        <!-- there were issues calling google.maps.event.addDomListener(window, 'load', initialize); so I am using this way of calling init instead -->
-        $scope.$on('$viewContentLoaded', function () {
-            // We need to check for connection status before attempting to connect to the google maps API otherwise bad things happen
-            if (hasNetworkConnectivity()) {
-                init();
-            } else {
-                $rootScope.noNetwork = true;
-                console.log("No network detected, cannot initialize map")
-            }
+        $rootScope.$watch('noNetwork', function() {
+            console.log("watch fired");
+            toggleMapVisibility();
         });
 
-        function init() {
-            console.log("initializing google maps")
+        <!-- there were issues calling google.maps.event.addDomListener(window, 'load', initialize); so I am using this way of calling init instead -->
+        $scope.$on('$viewContentLoaded', function () {
+            toggleMapVisibility();
+        });
 
+        function toggleMapVisibility() {
+            // We need to check for connection status before attempting to connect to the google maps API otherwise bad things happen
+            if (!$rootScope.noNetwork) {
+                console.log("Network detected, initializing map")
+                init();
+            } else {
+                console.log("No network detected, cannot initialize map")
+            }
+        }
+
+        function init() {
             var googlePos = new google.maps.LatLng(-33.8665433, 151.1956316);
 
             //TODO: fix map centering to allow for infoWindow
@@ -157,10 +163,4 @@ function refreshPageContent(promise, $scope, collectionName) {
         });
         $scope.$broadcast('scroll.refreshComplete');
     };
-}
-
-//Think we're all good now. Have added the cordova network plugin
-function hasNetworkConnectivity() {
-    console.log("navigator.onLine " + navigator.onLine);
-    return navigator.onLine;
 }
