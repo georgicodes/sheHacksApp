@@ -28,8 +28,8 @@ $ cordova plugin add org.apache.cordova.network-information
 
 Stop / Start
 ```
-$ phonegap local plugin add xxx
-$ phonegap local plugin remove xxx
+$ cordova plugin add xxx
+$ cordova plugin remove xxx
 ```
 
 ## Getting icons into IOS
