@@ -30,6 +30,7 @@ Stop / Start
 ```
 $ cordova plugin add xxx
 $ cordova plugin remove xxx
+$ cordova plugin ls -- list plugins
 ```
 
 ## Getting icons into IOS
