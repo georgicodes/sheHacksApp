@@ -26,6 +26,10 @@ sideMenuApp.config(['$routeProvider', function ($routeProvider, $locationProvide
             controller: 'AboutController',
             templateUrl: 'templates/about.html'
         })
+        .when('/twitter', {
+            controller: 'TwitterController',
+            templateUrl: 'templates/twitter.html'
+        })
         .otherwise({ redirectTo: '/program' });
 }]);
 

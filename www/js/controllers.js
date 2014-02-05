@@ -153,6 +153,21 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         });
 
         $scope.onRefresh = refreshPageContent(CreditsService.getCredits, $scope, "people");
+    })
+
+
+    .controller('TwitterController', function ($scope, ProgramService) {
+        $scope.title = "Twitter";
+
+//        ProgramService.getProgram().then(function (success) {
+//            $scope.schedule = success;
+//        }, function (error) {
+//            $scope.updateStatus = "Unable to retrieve latest data";
+//        }, function (update) {
+//            $scope.schedule = update;
+//        });
+//
+//        $scope.onRefresh = refreshPageContent(ProgramService.getProgram, $scope, "schedule");
     });
 
 function refreshPageContent(promise, $scope, collectionName) {

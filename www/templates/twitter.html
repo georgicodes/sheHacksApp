@@ -1,0 +1,18 @@
+<nav-page id="twitter">
+
+    <!-- content area -->
+    <content has-header="true" scroll="true" on-refresh="onRefresh()">
+
+        <refresher></refresher>
+        <h2 class="padding-left padding-right padding-bottom cursive-font">> {{title}} <</h2>
+        <div class="list">
+            <div class="item item-thumbnail-left notransition"
+                 ng-repeat="sponsor in sponsors">
+                <img ng-src="{{sponsor.src}}">
+                <h2>{{sponsor.name}}</h2>
+                <a ng-click="openLink(sponsor.link)">{{sponsor.link}}</a>
+            </div>
+        </div>
+    </content>
+
+</nav-page>
