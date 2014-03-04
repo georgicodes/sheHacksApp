@@ -1,0 +1,16 @@
+<nav-page id="sponsors">
+
+    <!-- content area -->
+    <content has-header="true" scroll="true" on-refresh="onRefresh()">
+
+        <h2 class="padding-left padding-right padding-bottom cursive-font">> {{title}} <</h2>
+        <div class="list">
+            <div class="item item-icon-left notransition"
+                 ng-repeat="event in events" ng-click="makeChoice(event.id)">
+                <i class="icon ion-map candy-purple"></i>
+                <h2>{{event.id}}</h2>
+            </div>
+        </div>
+    </content>
+
+</nav-page>

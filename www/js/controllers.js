@@ -22,21 +22,62 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
     })
 
-    .controller('VenueController', function ($scope, $rootScope, EventsService) {
-        $scope.title = "Venue & Map";
+    .controller('ChooseController', function ($scope, $rootScope, EventsService, localStorageService, $location) {
+        $scope.title = "Choose your venue";
+
+        $scope.init = function () {
+            if (localStorageService.get("venueChoice")) {
+                $location.path("/program")
+            }
+        }
+
+        $scope.makeChoice = function (eventId) {
+            localStorageService.add("venueChoice", eventId);
+            $location.path("/program")
+        }
 
         EventsService.getEvents().then(function (success) {
-            $scope.event = success[0];
-            $scope.firstDay = $scope.event.eventDays[0];
-            $scope.secondDay = $scope.event.eventDays[1];
+            $scope.events = success;
         }, function (error) {
             console.log("error: " + error);
             $scope.updateStatus = "Unable to retrieve latest data";
         }, function (update) {
-            $scope.event = update[0];
-            $scope.firstDay = $scope.event.eventDays[0];
-            $scope.secondDay = $scope.event.eventDays[1];
+            $scope.events = update;
         });
+
+        $scope.init();
+
+    })
+
+    .controller('VenueController', function ($scope, $rootScope, EventsService, localStorageService) {
+        $scope.title = "Venue & Map";
+
+        EventsService.getEvents().then(function (success) {
+            $scope.initCurrentEvent(success);
+        }, function (error) {
+            console.log("error: " + error);
+            $scope.updateStatus = "Unable to retrieve latest data";
+        }, function (update) {
+            $scope.initCurrentEvent(update);
+        });
+
+        $scope.initCurrentEvent = function(data) {
+            for (var i=0; i< data.length; i++) {
+                var temp = data[i];
+                if (temp.id == localStorageService.get("venueChoice")) {
+                    $scope.event = temp;
+                    $scope.firstDay = $scope.event.eventDays[0];
+                    $scope.secondDay = $scope.event.eventDays[1];
+                    break;
+                }
+            }
+            // use syd as backup
+            if ($scope.event == null) {
+                $scope.event = data[0];
+                $scope.firstDay = $scope.event.eventDays[0];
+                $scope.secondDay = $scope.event.eventDays[1];
+            }
+        };
 
         $rootScope.$watch('noNetwork', function() {
             console.log("watch fired");
@@ -59,9 +100,20 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         }
 
         function init() {
-            var googlePos = new google.maps.LatLng(-33.8665433, 151.1956316);
+            var googlePos;
 
-            //TODO: fix map centering to allow for infoWindow
+            switch(localStorageService.get("venueChoice"))
+            {
+                case "Sydney":
+                    googlePos = new google.maps.LatLng(-33.8665433, 151.1956316);
+                    break;
+                case "Melbourne":
+                    googlePos = new google.maps.LatLng(-33.8665433, 151.1956316);
+                    break;
+                default:
+                    googlePos = new google.maps.LatLng(-33.8665433, 151.1956316);
+            }
+
             var mapOptions = {
                 center: googlePos,
                 zoom: 16,
@@ -72,12 +124,7 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
             var marker = new google.maps.Marker({
                 position: googlePos,
-                map: map,
-                title: 'Google Sydney'
-            });
-
-            var infowindow = new google.maps.InfoWindow({
-                content: "<p style='height: 40px'>Google Sydney</p>"
+                map: map
             });
 
             // Stop the side bar from dragging when mousedown/tapdown on the map
@@ -87,7 +134,6 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
             });
 
             $scope.map = map;
-//            infowindow.open(map, marker);
         };
 
     })
@@ -155,20 +201,6 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         $scope.onRefresh = refreshPageContent(CreditsService.getCredits, $scope, "people");
     })
 
-
-    .controller('TwitterController', function ($scope, ProgramService) {
-        $scope.title = "Twitter";
-
-//        ProgramService.getProgram().then(function (success) {
-//            $scope.schedule = success;
-//        }, function (error) {
-//            $scope.updateStatus = "Unable to retrieve latest data";
-//        }, function (update) {
-//            $scope.schedule = update;
-//        });
-//
-//        $scope.onRefresh = refreshPageContent(ProgramService.getProgram, $scope, "schedule");
-    });
 
 function refreshPageContent(promise, $scope, collectionName) {
     return function() {

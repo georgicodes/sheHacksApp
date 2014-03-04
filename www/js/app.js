@@ -10,6 +10,10 @@ sideMenuApp.config(['$routeProvider', function ($routeProvider, $locationProvide
             controller: 'VenueController',
             templateUrl: 'templates/venue.html'
         })
+        .when('/choose', {
+            controller: 'ChooseController',
+            templateUrl: 'templates/choose.html'
+        })
         .when('/sponsors', {
             controller: 'SponsorsController',
             templateUrl: 'templates/sponsors.html'
@@ -30,7 +34,7 @@ sideMenuApp.config(['$routeProvider', function ($routeProvider, $locationProvide
             controller: 'TwitterController',
             templateUrl: 'templates/twitter.html'
         })
-        .otherwise({ redirectTo: '/program' });
+        .otherwise({ redirectTo: '/choose' });
 }]);
 
 sideMenuApp.run(function($rootScope) {

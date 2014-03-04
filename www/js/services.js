@@ -5,9 +5,8 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'ngResource', 'she
         var menuItems = [
             { text: 'Program', iconClass: 'icon ion-clipboard', colour: "candy-pink-bg", link: '#/program'},
             { text: 'Venue & Map', iconClass: 'icon ion-map', colour: "candy-purple-bg", link: '#/venue'},
-            { text: 'Twitter', iconClass: 'icon ion-speakerphone', colour: "candy-blue-bg", link: '#/twitter'},
-            { text: 'Prizes', iconClass: 'icon ion-icecream', colour: "candy-green-bg", link: '#/prizes'},
-            { text: 'Sponsors', iconClass: 'icon ion-heart', colour: "candy-orange-bg", link: '#/sponsors'},
+            { text: 'Prizes', iconClass: 'icon ion-icecream', colour: "candy-blue-bg", link: '#/prizes'},
+            { text: 'Sponsors', iconClass: 'icon ion-heart', colour: "candy-green-bg", link: '#/sponsors'},
             { text: 'About', iconClass: 'icon ion-woman', colour: "candy-yellow-bg", link: '#/about'}
         ];
 
@@ -68,15 +67,6 @@ angular.module('sheHacksApp.services', ['LocalStorageModule', 'ngResource', 'she
 
     .factory('EventsService', function ($resource, API_END_POINT, localStorageService, $q, $rootScope) {
         return {
-//            getSheHacksEvent: function () {
-//                var resource = $resource(API_END_POINT + '/events:EventId', {
-//                    EventId: 'SheHacks'
-//                }, {
-//                    query: { method: 'GET', isArray: true }
-//                });
-//
-//                return queryAndUpdateLocalStorage(localStorageService, deferredUpdateService, 'events', resource);
-//            },
             getEvents: function () {
                 var resource = $resource(API_END_POINT + '/events', {
                     query: { method: 'GET', isArray: true }
