@@ -25,6 +25,14 @@ $ cordova plugin add org.apache.cordova.inappbrowser
 $ cordova plugin add org.apache.cordova.statusbar
 $ cordova plugin add org.apache.cordova.network-information
 ```
+
+Stop / Start
+```
+$ cordova plugin add xxx
+$ cordova plugin remove xxx
+$ cordova plugin ls -- list plugins
+```
+
 ## Getting icons into IOS
 Copy `app_asset/icons` and `app_assets/splash` to the `platforms/ios/Resource/` directory. Replace what's in `icons` and `splash`. 
 Then remove app from phone, select Program > Clean from XCode and then deploy to phone.
