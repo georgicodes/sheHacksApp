@@ -32,7 +32,8 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
         }
 
         $scope.makeChoice = function (eventId) {
-            localStorageService.add("venueChoice", eventId);
+            $rootScope.venueChoice = eventId;
+            localStorageService.add("venueChoice", $rootScope.venueChoice);
             $location.path("/program")
         }
 
@@ -51,6 +52,13 @@ angular.module('sheHacksApp.controllers', ['LocalStorageModule'])
 
     .controller('VenueController', function ($scope, $rootScope, EventsService, localStorageService) {
         $scope.title = "Venue & Map";
+
+        $scope.initController = function() {
+            if ($rootScope.venueChoice == undefined || $rootScope.venueChoice == "") {
+                $location.path("/choose")
+            }
+        }
+        $scope.initController();
 
         EventsService.getEvents().then(function (success) {
             $scope.initCurrentEvent(success);

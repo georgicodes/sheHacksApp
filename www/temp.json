@@ -1,0 +1,84 @@
+{
+    "_id": {
+        "$oid": "5315a1abe4b0569c83a8867f"
+    },
+    "id": "Melbourne",
+    "eventDays": [
+        {
+            "eventDate": "2014-03-21T00:00:00+11:00",
+            "startTime": "2014-03-21T18:00:00+11:00",
+            "endTime": "2014-03-21T24:00:00+11:00"
+        },
+        {
+            "eventDate": "2014-03-22T00:00:00+11:00",
+            "startTime": "2014-03-22T09:00:00+11:00",
+            "endTime": "2014-03-22T18:00:00+11:00"
+        }
+    ],
+    "address": {
+        "addressLine1": "Inspire9",
+        "addressLine2": "1/41 Stewart Street, Richmond",
+        "lat": "-33.8665433",
+        "long": "151.1956316"
+    },
+    "program": [
+        {
+            "date": "FRIDAY 21st MARCH, 2014",
+            "program": [
+                {
+                    "title": "Guest Arrival & Registration",
+                    "time": "18:00"
+                },
+                {
+                    "title": "Welcome & Lightning Talks",
+                    "time": "18:30"
+                },
+                {
+                    "title": "Pitches & Group Formation",
+                    "time": "19:00"
+                },
+                {
+                    "title": "Dinner",
+                    "time": "19:30"
+                },
+                {
+                    "title": "Start Hacking",
+                    "time": "20:00"
+                },
+                {
+                    "title": "Home Time",
+                    "time": "24:00"
+                }
+            ]
+        },
+        {
+            "date": "SATURDAY 22nd MARCH, 2014",
+            "program": [
+                {
+                    "title": "Coffee & Hacking",
+                    "time": "09:00"
+                },
+                {
+                    "title": "Morning Tea",
+                    "time": "10:00"
+                },
+                {
+                    "title": "Lunch",
+                    "time": "12:00"
+                },
+                {
+                    "title": "Team Presentations",
+                    "time": "17:00"
+                },
+                {
+                    "title": "Judging and Prizes",
+                    "time": "17:30"
+                },
+                {
+                    "title": "End of She Hacks",
+                    "time": "18:00"
+                }
+            ]
+        }
+    ]
+}
